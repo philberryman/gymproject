@@ -62,7 +62,7 @@ export const deleteTodo = gql`
 
 export const getActivePrograms = gql`
   query activePrograms {
-    user_programs(where: { active: { _eq: true } }) {
+    programs(where: { active: { _eq: true } }) {
       id
       name
       user_id
@@ -79,6 +79,7 @@ export const getProgramSets = gql`
         id
         name
         user_set_exercises {
+          id
           exercise {
             name
           }
@@ -99,6 +100,7 @@ export const getSetExercises = gql`
           name
           id
           user_set_exercises {
+            id
             exercise {
               name
             }

@@ -76,7 +76,10 @@ export const AddSet = ({ programSets, programId }) => {
               <div>
                 <ul>
                   {availableSets.map(set => (
-                    <li onClick={() => addSetToProgram(set.id, addProgramSet)}>
+                    <li
+                      key={set.id}
+                      onClick={() => addSetToProgram(set.id, addProgramSet)}
+                    >
                       {set.name}{" "}
                     </li>
                   ))}

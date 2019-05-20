@@ -1,12 +1,12 @@
 import React, { useContext } from "react";
 import { Route, Router, Switch } from "react-router-dom";
-import Callback from "./Callback";
-import Header from "./Header";
-import Login from "./Login";
-import UserPrograms from "./UserPrograms";
-import UserProgramSets from "./UserProgramSets";
-import UserSetExercises from "./UserSetExercises";
-import HomeUser from "./HomeUser.js";
+import { Callback } from "./Callback";
+import { Header } from "./Header";
+import { Login } from "./Login";
+import { AllPrograms } from "./AllPrograms";
+import { ProgramSets } from "./ProgramSets";
+import { SetExercises } from "./SetExercises";
+import { Home } from "./Home.js";
 
 import Auth from "../Auth/Auth";
 import history from "../history";
@@ -44,9 +44,12 @@ export const App = () => {
       Authorization: `Bearer ${ACCESS_TOKEN}`,
     },
   });
-  const token = useContext(TokenContext);
 
+  // Only being used to force re-render on login. Should refactor this to cleaner solution
+  const token = useContext(TokenContext);
   console.log(token);
+  //  ^^^^^^^^^
+
   return (
     <ApolloProvider client={client}>
       <Router history={history}>
@@ -55,19 +58,19 @@ export const App = () => {
           <Switch>
             <Route
               path="/home"
-              render={props => <HomeUser auth={auth} {...props} />}
+              render={props => <Home auth={auth} {...props} />}
             />
             <PrivateRoute
               path="/programs/:programId/:setId"
-              component={props => <UserSetExercises auth={auth} {...props} />}
+              component={props => <SetExercises auth={auth} {...props} />}
             />
             <PrivateRoute
               path="/programs/:id"
-              component={props => <UserProgramSets auth={auth} {...props} />}
+              component={props => <ProgramSets auth={auth} {...props} />}
             />
             <PrivateRoute
               path="/programs"
-              component={props => <UserPrograms auth={auth} {...props} />}
+              component={props => <AllPrograms auth={auth} {...props} />}
             />
             <Route
               path="/callback"
@@ -78,7 +81,7 @@ export const App = () => {
             />
             <PrivateRoute
               path="/"
-              component={props => <HomeUser auth={auth} {...props} />}
+              component={props => <Home auth={auth} {...props} />}
             />
           </Switch>
         </div>
