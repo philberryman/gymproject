@@ -1,12 +1,26 @@
-import React from 'react';
-import ReactDOM from 'react-dom';
-import './index.css';
-import App from './App';
-import * as serviceWorker from './serviceWorker';
+import ReactDOM from "react-dom";
+import React, { createContext, useState } from "react";
+import "./index.css";
+import registerServiceWorker from "./registerServiceWorker";
+import { App } from "./Components/App";
 
-ReactDOM.render(<App />, document.getElementById('root'));
+export const TokenContext = createContext();
+export let token = 0;
+export let setToken = {};
 
-// If you want your app to work offline and load faster, you can change
-// unregister() to register() below. Note this comes with some pitfalls.
-// Learn more about service workers: https://bit.ly/CRA-PWA
-serviceWorker.unregister();
+const Routes = () => {
+  [token, setToken] = useState("");
+
+  return (
+    <TokenContext.Provider
+      value={{
+        value: token,
+      }}
+    >
+      <App />
+    </TokenContext.Provider>
+  );
+};
+
+ReactDOM.render(<Routes />, document.getElementById("root"));
+registerServiceWorker();
