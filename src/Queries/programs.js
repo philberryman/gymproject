@@ -2,7 +2,7 @@ import gql from "graphql-tag";
 
 export const GET_PROGRAMS = gql`
   query programs {
-    programs(where: { active: { _eq: true } }) {
+    programs {
       id
       name
       user_id
@@ -17,9 +17,16 @@ export const ADD_PROGRAM = gql`
         id
         name
         description
-        active
         user_id
       }
+    }
+  }
+`;
+
+export const DELETE_PROGRAM = gql`
+  mutation deleteProgram($programId: Int!) {
+    delete_programs(where: { id: { _eq: $programId } }) {
+      affected_rows
     }
   }
 `;

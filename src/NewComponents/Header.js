@@ -12,6 +12,9 @@ export const Header = props => {
         <li>
           <Link to="/exercises">Exercises</Link>
         </li>
+        <li>
+          <Link to="/sets">Sets</Link>
+        </li>
       </ul>
     </div>
   );

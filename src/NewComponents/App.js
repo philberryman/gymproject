@@ -6,6 +6,9 @@ import { Login } from "./Login";
 import { AllPrograms } from "./AllPrograms";
 import { ProgramSets } from "./ProgramSets";
 import { SetExercises } from "./SetExercises";
+import { AllSets } from "./AllSets";
+import { AllExercises } from "./AllExercises";
+
 import { Home } from "./Home.js";
 
 import Auth from "../Auth/Auth";
@@ -37,11 +40,12 @@ function PrivateRoute({ component: Component, ...rest }) {
 }
 
 export const App = () => {
-  const ACCESS_TOKEN = localStorage.getItem("access_token");
+  const ID_TOKEN = localStorage.getItem("id_token");
+
   const client = new ApolloClient({
-    uri: "https://hasura-phil-todo.herokuapp.com/v1alpha1/graphql",
+    uri: "http://localhost:8080/v1/graphql",
     headers: {
-      Authorization: `Bearer ${ACCESS_TOKEN}`,
+      Authorization: `Bearer ${ID_TOKEN}`,
     },
   });
 
@@ -61,7 +65,7 @@ export const App = () => {
               render={props => <Home auth={auth} {...props} />}
             />
             <PrivateRoute
-              path="/programs/:programId/:setId"
+              path="/sets/:setId"
               component={props => <SetExercises auth={auth} {...props} />}
             />
             <PrivateRoute
@@ -71,6 +75,14 @@ export const App = () => {
             <PrivateRoute
               path="/programs"
               component={props => <AllPrograms auth={auth} {...props} />}
+            />
+            <PrivateRoute
+              path="/sets"
+              component={props => <AllSets auth={auth} {...props} />}
+            />
+            <PrivateRoute
+              path="/exercises"
+              component={props => <AllExercises auth={auth} {...props} />}
             />
             <Route
               path="/callback"

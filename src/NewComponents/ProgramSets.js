@@ -1,19 +1,41 @@
 import React from "react";
-import { Query } from "react-apollo";
+import { Query, Mutation } from "react-apollo";
 import { Link } from "react-router-dom";
 
-import { GET_PROGRAM_SETS } from "../Queries/programSets";
-import { AddSet } from "./AddSet";
+import { GET_PROGRAM_SETS, DELETE_PROGRAM_SET } from "../Queries/programSets";
+import { AddProgramSet } from "./AddProgramSet";
 import { ListGroup, ListGroupItem, Grid, Row, Col } from "react-bootstrap";
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import { faSpinner } from "@fortawesome/free-solid-svg-icons";
+
+const RemoveFromProgram = ({ programSetId, programId }) => {
+  console.log(programSetId);
+  console.log(programId);
+  return (
+    <Mutation
+      mutation={DELETE_PROGRAM_SET}
+      refetchQueries={[
+        { query: GET_PROGRAM_SETS, variables: { id: programId } },
+      ]}
+    >
+      {deleteProgramSet => (
+        <button
+          onClick={() => deleteProgramSet({ variables: { programSetId } })}
+        >
+          Remove From Program
+        </button>
+      )}
+    </Mutation>
+  );
+};
 
 export const ProgramSets = ({ match }) => {
   const programId = match.params.id;
   return (
     <Query query={GET_PROGRAM_SETS} variables={{ id: programId }}>
       {({ loading, error, data }) => {
-        const sets = data.program_sets;
+        console.log(error);
+        console.log(data);
         if (loading)
           return (
             <h2>
@@ -26,13 +48,17 @@ export const ProgramSets = ({ match }) => {
             </h2>
           );
         if (error) return `Error! fetching todos.`;
-        if (sets.length === 0)
+        const sets = data.program_sets;
+        if (sets.length === 0) {
+          console.log("sets === 0");
           return (
             <div>
-              <AddSet programSets={sets} programId={programId} />
+              <AddProgramSet programSets={sets} programId={programId} />
             </div>
           );
+        }
         let count = 0;
+
         return (
           <div>
             <Grid>
@@ -51,12 +77,16 @@ export const ProgramSets = ({ match }) => {
                             {" "}
                             {set.set.name}
                           </Link>
+                          <RemoveFromProgram
+                            programSetId={set.id}
+                            programId={programId}
+                          />
                         </h4>
                       </ListGroupItem>
                     ))}
                   </ListGroup>
                   <>
-                    <AddSet programSets={sets} programId={programId} />
+                    <AddProgramSet programSets={sets} programId={programId} />
                   </>
                 </Col>
               </Row>

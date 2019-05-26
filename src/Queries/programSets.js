@@ -51,3 +51,11 @@ export const GET_USER_SETS = gql`
     }
   }
 `;
+
+export const DELETE_PROGRAM_SET = gql`
+  mutation deleteProgramSets($programSetId: Int!) {
+    delete_program_sets(where: { id: { _eq: $programSetId } }) {
+      affected_rows
+    }
+  }
+`;

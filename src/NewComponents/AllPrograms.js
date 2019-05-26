@@ -1,13 +1,20 @@
 import React from "react";
-import { Query } from "react-apollo";
+import { Query, Mutation } from "react-apollo";
 import { Link } from "react-router-dom";
 
-import { GET_PROGRAMS } from "../Queries/programs";
+import { GET_PROGRAMS, DELETE_PROGRAM } from "../Queries/programs";
 
 import { AddProgram } from "./AddProgram";
 import { ListGroup, ListGroupItem, Grid, Row, Col } from "react-bootstrap";
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import { faSpinner } from "@fortawesome/free-solid-svg-icons";
+
+export const onDelete = (programId, deleteProgram) => {
+  console.log(programId);
+  deleteProgram({
+    variables: { programId },
+  });
+};
 
 export const AllPrograms = props => {
   return (
@@ -51,6 +58,20 @@ export const AllPrograms = props => {
                             {" "}
                             {program.name}
                           </Link>
+                          <Mutation
+                            mutation={DELETE_PROGRAM}
+                            refetchQueries={[{ query: GET_PROGRAMS }]}
+                          >
+                            {deleteProgram => (
+                              <button
+                                onClick={() =>
+                                  onDelete(program.id, deleteProgram)
+                                }
+                              >
+                                Delete
+                              </button>
+                            )}
+                          </Mutation>
                         </h4>
                       </ListGroupItem>
                     ))}

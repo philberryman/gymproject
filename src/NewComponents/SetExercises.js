@@ -2,17 +2,19 @@ import React from "react";
 import { Query } from "react-apollo";
 import { Link } from "react-router-dom";
 
-import { GET_PROGRAM_SETS } from "../Queries/programSets";
+import { GET_SET_EXERCISES } from "../Queries/setExercises";
+import { DELETE_SET_EXERCISE } from "../Queries/setExercises";
+import { AddSetExercise } from "./AddSetExercise";
+
 import { ListGroup, ListGroupItem, Grid, Row, Col } from "react-bootstrap";
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import { faSpinner } from "@fortawesome/free-solid-svg-icons";
 
 export const SetExercises = ({ match }) => {
-  const programId = match.params.programId;
   const setId = match.params.setId;
 
   return (
-    <Query query={GET_PROGRAM_SETS} variables={{ id: programId }}>
+    <Query query={GET_SET_EXERCISES} variables={{ setId: setId }}>
       {({ loading, error, data }) => {
         if (loading)
           return (
@@ -27,15 +29,16 @@ export const SetExercises = ({ match }) => {
           );
         if (error) return `Error! fetching todos.`;
 
-        console.log("jdjdj");
         let count = 0;
-        const sets = data.program_sets;
-        const set = sets.find(item => item.id === Number(setId));
-        const exercises = set.set.set_exercises;
+        const exercises = data.set_exercises;
+        console.log(data);
+        console.log(exercises);
+
         if (exercises.length === 0)
           return (
             <div>
               <h3>No Excercises Created Yet</h3>
+              <AddSetExercise setId={setId} />
             </div>
           );
         return (
@@ -44,6 +47,7 @@ export const SetExercises = ({ match }) => {
               <Row>
                 <Col md={8} mdPush={2}>
                   <ListGroup>
+                    {console.log(exercises[0])}
                     {exercises.map(item => (
                       <ListGroupItem key={item.id}>
                         {/* <ButtonG roup className="pull-right">
@@ -64,6 +68,7 @@ export const SetExercises = ({ match }) => {
                 </Col>
               </Row>
             </Grid>
+            <AddSetExercise setId={setId} />
           </div>
         );
       }}
