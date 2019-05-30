@@ -22,7 +22,7 @@ export const SetForm = ({ onSubmit }) => {
       <input
         onChange={e => setName(e.target.value)}
         type="text"
-        placeholder="name"
+        placeholder="set name"
         value={name}
       />
       <br />

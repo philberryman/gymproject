@@ -5,7 +5,6 @@ export const GET_PROGRAMS = gql`
     programs {
       id
       name
-      user_id
     }
   }
 `;

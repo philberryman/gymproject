@@ -69,6 +69,10 @@ export const App = () => {
               component={props => <SetExercises auth={auth} {...props} />}
             />
             <PrivateRoute
+              path="/programs/:id/:setId"
+              component={props => <SetExercises auth={auth} {...props} />}
+            />
+            <PrivateRoute
               path="/programs/:id"
               component={props => <ProgramSets auth={auth} {...props} />}
             />

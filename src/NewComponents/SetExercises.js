@@ -1,5 +1,5 @@
 import React from "react";
-import { Query } from "react-apollo";
+import { Query, Mutation } from "react-apollo";
 import { Link } from "react-router-dom";
 
 import { GET_SET_EXERCISES } from "../Queries/setExercises";
@@ -9,6 +9,12 @@ import { AddSetExercise } from "./AddSetExercise";
 import { ListGroup, ListGroupItem, Grid, Row, Col } from "react-bootstrap";
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import { faSpinner } from "@fortawesome/free-solid-svg-icons";
+
+export const onDelete = (setExerciseId, deleteSetExercise) => {
+  deleteSetExercise({
+    variables: { setExerciseId },
+  });
+};
 
 export const SetExercises = ({ match }) => {
   const setId = match.params.setId;
@@ -61,6 +67,25 @@ export const SetExercises = ({ match }) => {
                             {item.exercise.name} x {item.reps} ({item.weight}{" "}
                             kgs)
                           </Link>
+                          <Mutation
+                            mutation={DELETE_SET_EXERCISE}
+                            refetchQueries={[
+                              {
+                                query: GET_SET_EXERCISES,
+                                variables: { setId },
+                              },
+                            ]}
+                          >
+                            {deleteSetExercise => (
+                              <button
+                                onClick={() =>
+                                  onDelete(item.id, deleteSetExercise)
+                                }
+                              >
+                                Delete
+                              </button>
+                            )}
+                          </Mutation>
                         </h4>
                       </ListGroupItem>
                     ))}

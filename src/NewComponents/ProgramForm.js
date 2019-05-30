@@ -21,7 +21,7 @@ export const ProgramForm = ({ onSubmit }) => {
       <input
         onChange={e => setName(e.target.value)}
         type="text"
-        placeholder="title"
+        placeholder="program name"
         value={name}
       />
       <button>Submit</button>

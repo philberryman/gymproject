@@ -22,7 +22,7 @@ export const ExerciseForm = ({ onSubmit }) => {
       <input
         onChange={e => setName(e.target.value)}
         type="text"
-        placeholder="name"
+        placeholder="exercise name"
         value={name}
       />
       <br />

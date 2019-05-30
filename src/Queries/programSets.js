@@ -8,14 +8,6 @@ export const GET_PROGRAM_SETS = gql`
       set {
         id
         name
-        set_exercises {
-          id
-          exercise {
-            name
-          }
-          reps
-          weight
-        }
       }
     }
   }

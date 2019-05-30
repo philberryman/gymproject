@@ -31,16 +31,35 @@ export const AddSetExercise = ({ programSets, setId }) => {
             {addExerciseSet => (
               <form
                 onSubmit={e => {
-                  console.log({ exerciseId, setId, weight, reps, rest, type });
                   e.preventDefault();
-                  addExerciseSet({
-                    variables: { exerciseId, setId, weight, reps, rest, type },
-                    refetchQueries: [{ query: GET_SET_EXERCISES }],
-                  })
-                    .then(() => {
-                      setWeight("");
+
+                  if (exerciseId && setId && weight && reps && rest && type) {
+                    console.log({
+                      exerciseId,
+                      setId,
+                      weight,
+                      reps,
+                      rest,
+                      type,
+                    });
+                    addExerciseSet({
+                      variables: {
+                        exerciseId,
+                        setId,
+                        weight,
+                        reps,
+                        rest,
+                        type,
+                      },
+                      refetchQueries: [
+                        { query: GET_SET_EXERCISES, variables: { setId } },
+                      ],
                     })
-                    .catch(e => console.log(e));
+                      .then(() => {
+                        setWeight("");
+                      })
+                      .catch(e => console.log(e));
+                  }
                 }}
               >
                 <label htmlFor="exercise-select">Select Exercise:</label>
@@ -50,6 +69,7 @@ export const AddSetExercise = ({ programSets, setId }) => {
                   onChange={e => setExerciseId(e.target.value)}
                   value={exerciseId}
                 >
+                  <option value={null}>Select exercise</option>
                   {exercises.map(exercise => (
                     <option key={exercise.id} value={exercise.id}>
                       {exercise.name}

@@ -23,7 +23,7 @@ export const AllPrograms = props => {
         if (loading)
           return (
             <h2>
-              Loading...{" "}
+              Loading...ZZ{" "}
               <FontAwesomeIcon
                 icon={faSpinner}
                 style={{ color: "blue" }}
