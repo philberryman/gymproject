@@ -30,7 +30,7 @@ export const AllSets = ({ match }) => {
               />
             </h2>
           );
-        if (error) return `Error! fetching todos.`;
+        if (error) return `Error! fetching sets.`;
         if (data.sets.length === 0)
           return (
             <div>

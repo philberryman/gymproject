@@ -16,9 +16,6 @@ export const AddSetExercise = ({ programSets, setId }) => {
   const [rest, setRest] = useState("");
   const [type, setType] = useState("");
 
-  console.log(setId);
-  console.log(exerciseId);
-
   return (
     <Query query={GET_EXERCISES}>
       {({ loading, error, data }) => {

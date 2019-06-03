@@ -9,8 +9,6 @@ import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import { faSpinner } from "@fortawesome/free-solid-svg-icons";
 
 const RemoveFromProgram = ({ programSetId, programId }) => {
-  console.log(programSetId);
-  console.log(programId);
   return (
     <Mutation
       mutation={DELETE_PROGRAM_SET}

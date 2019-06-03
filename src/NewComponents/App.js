@@ -10,6 +10,7 @@ import { AllSets } from "./AllSets";
 import { AllExercises } from "./AllExercises";
 
 import { Home } from "./Home.js";
+import { WholeScreen, MainContainer } from "../Styles/styles.js";
 
 import Auth from "../Auth/Auth";
 import history from "../history";
@@ -43,7 +44,11 @@ export const App = () => {
   const ID_TOKEN = localStorage.getItem("id_token");
 
   const client = new ApolloClient({
-    uri: "http://localhost:8080/v1/graphql",
+    uri:
+      window.location.protocol +
+      "//" +
+      window.location.hostname +
+      ":8080/v1/graphql",
     headers: {
       Authorization: `Bearer ${ID_TOKEN}`,
     },
@@ -52,55 +57,58 @@ export const App = () => {
   // Only being used to force re-render on login. Should refactor this to cleaner solution
   const token = useContext(TokenContext);
   console.log(token);
-  //  ^^^^^^^^^
+  //  ^^^^^^^^
 
   return (
     <ApolloProvider client={client}>
       <Router history={history}>
-        <div>
+        <WholeScreen className={module}>
           <Route path="/" render={props => <Header auth={auth} {...props} />} />
-          <Switch>
-            <Route
-              path="/home"
-              render={props => <Home auth={auth} {...props} />}
-            />
-            <PrivateRoute
-              path="/sets/:setId"
-              component={props => <SetExercises auth={auth} {...props} />}
-            />
-            <PrivateRoute
-              path="/programs/:id/:setId"
-              component={props => <SetExercises auth={auth} {...props} />}
-            />
-            <PrivateRoute
-              path="/programs/:id"
-              component={props => <ProgramSets auth={auth} {...props} />}
-            />
-            <PrivateRoute
-              path="/programs"
-              component={props => <AllPrograms auth={auth} {...props} />}
-            />
-            <PrivateRoute
-              path="/sets"
-              component={props => <AllSets auth={auth} {...props} />}
-            />
-            <PrivateRoute
-              path="/exercises"
-              component={props => <AllExercises auth={auth} {...props} />}
-            />
-            <Route
-              path="/callback"
-              render={props => {
-                handleAuthentication(props);
-                return <Callback {...props} />;
-              }}
-            />
-            <PrivateRoute
-              path="/"
-              component={props => <Home auth={auth} {...props} />}
-            />
-          </Switch>
-        </div>
+          <MainContainer>
+            <Switch>
+              <Route
+                path="/home"
+                render={props => <Home auth={auth} {...props} />}
+              />
+              <PrivateRoute
+                path="/sets/:setId"
+                component={props => <SetExercises auth={auth} {...props} />}
+              />
+              <PrivateRoute
+                path="/programs/:id/:setId"
+                component={props => <SetExercises auth={auth} {...props} />}
+              />
+              <PrivateRoute
+                path="/programs/:id"
+                component={props => <ProgramSets auth={auth} {...props} />}
+              />
+              <PrivateRoute
+                path="/programs"
+                component={props => <AllPrograms auth={auth} {...props} />}
+              />
+              <PrivateRoute
+                path="/sets"
+                component={props => <AllSets auth={auth} {...props} />}
+              />
+              <PrivateRoute
+                path="/exercises"
+                component={props => <AllExercises auth={auth} {...props} />}
+              />
+              <Route
+                path="/callback"
+                render={props => {
+                  handleAuthentication(props);
+                  return <Callback {...props} />;
+                }}
+              />
+              <PrivateRoute
+                path="/"
+                component={props => <Home auth={auth} {...props} />}
+              />
+            </Switch>
+          </MainContainer>
+          <div>{token.value}</div>
+        </WholeScreen>
       </Router>
     </ApolloProvider>
   );

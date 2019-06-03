@@ -4,7 +4,6 @@ import { GET_SETS } from "../Queries/sets";
 export const SetForm = ({ onSubmit }) => {
   const [name, setName] = useState("");
   const [description, setDescription] = useState("");
-
   return (
     <form
       onSubmit={e => {

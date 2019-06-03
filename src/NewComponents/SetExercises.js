@@ -1,11 +1,9 @@
 import React from "react";
 import { Query, Mutation } from "react-apollo";
 import { Link } from "react-router-dom";
-
 import { GET_SET_EXERCISES } from "../Queries/setExercises";
 import { DELETE_SET_EXERCISE } from "../Queries/setExercises";
 import { AddSetExercise } from "./AddSetExercise";
-
 import { ListGroup, ListGroupItem, Grid, Row, Col } from "react-bootstrap";
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import { faSpinner } from "@fortawesome/free-solid-svg-icons";

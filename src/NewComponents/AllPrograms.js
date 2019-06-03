@@ -53,7 +53,7 @@ export const AllPrograms = props => {
                           <DeleteTodo todo_id={todo.todo_id} />
                         </ButtonGroup> */}
                         <h4>
-                          {(count = count + 1)}.{" "}
+                          {(count = count + 1)}.
                           <Link to={`/programs/${program.id}`}>
                             {" "}
                             {program.name}

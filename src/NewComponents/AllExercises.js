@@ -30,7 +30,7 @@ export const AllExercises = ({ match }) => {
               />
             </h2>
           );
-        if (error) return `Error! fetching todos.`;
+        if (error) return `Error! fetching exercises.`;
         if (data.exercises.length === 0)
           return (
             <div>

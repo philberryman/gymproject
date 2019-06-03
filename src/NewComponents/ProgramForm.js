@@ -3,7 +3,6 @@ import { GET_PROGRAMS } from "../Queries/programs";
 
 export const ProgramForm = ({ onSubmit }) => {
   const [name, setName] = useState("");
-
   return (
     <form
       onSubmit={e => {

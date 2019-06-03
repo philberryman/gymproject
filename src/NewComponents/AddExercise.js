@@ -1,7 +1,6 @@
 import React from "react";
 import { Mutation } from "react-apollo";
 import { ADD_EXERCISE } from "../Queries/exercises";
-
 import { ExerciseForm } from "./ExerciseForm";
 
 export const AddExercise = () => {

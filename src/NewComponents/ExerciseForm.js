@@ -4,7 +4,6 @@ import { GET_EXERCISES } from "../Queries/exercises";
 export const ExerciseForm = ({ onSubmit }) => {
   const [name, setName] = useState("");
   const [description, setDescription] = useState("");
-
   return (
     <form
       onSubmit={e => {

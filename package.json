@@ -15,8 +15,27 @@
     "react-apollo": "^2.2.2",
     "react-bootstrap": "^0.32.4",
     "react-dom": "^16.8.6",
+    "react-headroom": "^2.2.8",
     "react-router-dom": "^4.3.1",
-    "react-scripts": "3.0.1"
+    "react-scripts": "3.0.1",
+    "styled-components": "^4.2.1"
+  },
+  "jest": {
+    "collectCoverageFrom": [
+      "src/**/*.{js,jsx,ts,tsx}",
+      "!<rootDir>/node_modules/"
+    ],
+    "coverageThreshold": {
+      "global": {
+        "branches": 10,
+        "functions": 10,
+        "lines": 10,
+        "statements": 10
+      }
+    },
+    "coverageReporters": [
+      "text"
+    ]
   },
   "scripts": {
     "start": "react-scripts start",

@@ -1,21 +1,17 @@
 import React from "react";
-import { Link } from "react-router-dom";
+
+import { MainHeader, Logo, Menu, LogoText } from "../Styles/styles.js";
+import menu from "../assets/menu.svg";
 
 export const Header = props => {
   return (
-    <div className="container">
-      <h1>Header</h1>
-      <ul>
-        <li>
-          <Link to="/programs">Programs</Link>
-        </li>
-        <li>
-          <Link to="/exercises">Exercises</Link>
-        </li>
-        <li>
-          <Link to="/sets">Sets</Link>
-        </li>
-      </ul>
-    </div>
+    <MainHeader>
+      <Logo>
+        <LogoText>GYM PROJECT</LogoText>
+      </Logo>
+      <Menu>
+        <img src={menu} alt="menu" />
+      </Menu>
+    </MainHeader>
   );
 };

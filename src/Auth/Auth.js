@@ -6,7 +6,12 @@ export default class Auth {
   auth0 = new auth0.WebAuth({
     domain: "berryman.eu.auth0.com",
     clientID: "21o589q6G8Un2aVO08VTIgqg240ucnlj",
-    redirectUri: "http://localhost:3000/callback",
+    redirectUri:
+      window.location.protocol +
+      "//" +
+      window.location.hostname +
+      (window.location.port ? ":" + window.location.port : "") +
+      "/callback",
     responseType: "token id_token",
     scope: "openid",
   });
