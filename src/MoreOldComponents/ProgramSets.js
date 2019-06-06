@@ -44,17 +44,15 @@ const SetsList = ({ sets, programId }) => {
   return (
     <UnstyledList>
       {sets.map(set => {
-        {
-          console.log(set);
-        }
+        console.log(set);
         return (
           <>
             <SetListItem onClick={() => setOpen(set.id)}>
-              {set.set.name} //{" "}
+              {set.activity.name}
               <RemoveFromProgram programSetId={set.id} programId={programId} />
             </SetListItem>
             {set.id === open && (
-              <SetExercises setExercises={set.set.set_exercises} />
+              <SetExercises setExercises={set.activity.activity_sets} />
             )}
           </>
         );
@@ -80,18 +78,22 @@ export const ProgramSets = ({ match }) => {
   return (
     <Query query={GET_PROGRAM_SETS} variables={{ id: programId }}>
       {({ loading, error, data }) => {
+        console.log(data);
+        const { program_activities } = data;
+        console.log(program_activities);
         if (loading) return null;
         if (error) return `Error! fetching todos.`;
-        const sets = data.program_sets;
-        if (sets.length === 0) {
-          console.log("sets === 0");
+        if (program_activities.length === 0) {
+          console.log("program_activities === 0");
           return (
             <div>
-              <AddProgramSet programSets={sets} programId={programId} />
+              <AddProgramSet
+                programSets={program_activities}
+                programId={programId}
+              />
             </div>
           );
         }
-        let count = 0;
         console.log(data);
         const currentProgram = data.programs[0];
 
@@ -114,7 +116,7 @@ export const ProgramSets = ({ match }) => {
                 </ButtonGroup>
               </ProgramListItem>
             </UnstyledList>
-            <SetsList sets={sets} programId={programId} />
+            <SetsList sets={program_activities} programId={programId} />
           </CenteredContainer>
         );
       }}

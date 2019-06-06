@@ -1,22 +1,26 @@
 import gql from "graphql-tag";
 
-export const GET_PROGRAM_SETS = gql`
+export const GET_PROGRAM_ACTIVITIES = gql`
   query programSets($id: Int!) {
-    program_sets(where: { program_id: { _eq: 6 } }) {
+    program_activities(where: { program_id: { _eq: $id } }) {
       id
+      program {
+        id
+      }
       program_id
-      set {
+      activity {
         id
         name
-        set_exercises {
+        activity_sets {
           exercise {
             name
           }
           id
           reps
           rest
-          weight
+          sets
           type
+          weight
         }
       }
     }
@@ -27,16 +31,18 @@ export const GET_PROGRAM_SETS = gql`
   }
 `;
 
-export const ADD_SET_TO_PROGRAM = gql`
+export const ADD_ACTIVITY_TO_PROGRAM = gql`
   mutation insert_user_program_sets($programId: Int!, $setId: Int!) {
-    insert_program_sets(objects: { program_id: $programId, set_id: $setId }) {
+    insert_program_activities(
+      objects: { program_id: $programId, activity_id: $setId }
+    ) {
       returning {
         id
         program_id
-        set {
+        activity {
           id
           name
-          set_exercises {
+          activity_sets {
             exercise {
               name
             }
@@ -49,18 +55,18 @@ export const ADD_SET_TO_PROGRAM = gql`
   }
 `;
 
-export const GET_USER_SETS = gql`
+export const GET_USER_ACTIVITIES = gql`
   query userSets {
-    sets {
+    activities {
       id
       name
     }
   }
 `;
 
-export const DELETE_PROGRAM_SET = gql`
+export const DELETE_PROGRAM_ACTIVITY = gql`
   mutation deleteProgramSets($programSetId: Int!) {
-    delete_program_sets(where: { id: { _eq: $programSetId } }) {
+    delete_program_activities(where: { id: { _eq: $programSetId } }) {
       affected_rows
     }
   }

@@ -4,10 +4,10 @@ import { Callback } from "./Callback";
 import { Header } from "./Header";
 import { Login } from "./Login";
 import { AllPrograms } from "./AllPrograms";
-import { ProgramSets } from "./ProgramSets";
-import { SetExercises } from "./SetExercises";
-import { AllSets } from "./AllSets";
-import { AllExercises } from "./AllExercises";
+import { Program } from "./Program";
+// import { SetExercises } from "./SetExercises";
+// import { AllSets } from "./AllSets";
+// import { AllExercises } from "./AllExercises";
 
 import { Home } from "./Home.js";
 import { WholeScreen, MainContainer } from "../Styles/styles.js";
@@ -48,7 +48,7 @@ export const App = () => {
       window.location.protocol +
       "//" +
       window.location.hostname +
-      ":8080/v1/graphql",
+      ":7070/v1/graphql",
     headers: {
       Authorization: `Bearer ${ID_TOKEN}`,
     },
@@ -56,7 +56,6 @@ export const App = () => {
 
   // Only being used to force re-render on login. Should refactor this to cleaner solution
   const token = useContext(TokenContext);
-  console.log(token);
   //  ^^^^^^^^
 
   return (
@@ -70,30 +69,30 @@ export const App = () => {
                 path="/home"
                 render={props => <Home auth={auth} {...props} />}
               />
-              <PrivateRoute
+              {/* <PrivateRoute
                 path="/sets/:setId"
                 component={props => <SetExercises auth={auth} {...props} />}
               />
               <PrivateRoute
                 path="/programs/:id/:setId"
                 component={props => <SetExercises auth={auth} {...props} />}
-              />
+              /> */}
               <PrivateRoute
                 path="/programs/:id"
-                component={props => <ProgramSets auth={auth} {...props} />}
+                component={props => <Program auth={auth} {...props} />}
               />
               <PrivateRoute
                 path="/programs"
                 component={props => <AllPrograms auth={auth} {...props} />}
               />
-              <PrivateRoute
+              {/* <PrivateRoute
                 path="/sets"
                 component={props => <AllSets auth={auth} {...props} />}
-              />
-              <PrivateRoute
+              /> */}
+              {/* <PrivateRoute
                 path="/exercises"
                 component={props => <AllExercises auth={auth} {...props} />}
-              />
+              /> */}
               <Route
                 path="/callback"
                 render={props => {

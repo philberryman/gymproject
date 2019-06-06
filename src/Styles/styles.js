@@ -77,7 +77,7 @@ export const ProgramListItem = styled.li`
   text-decoration: "none";
 `;
 
-export const SetListItem = styled.li`
+export const ActivityItem = styled.li`
   display: flex;
   justify-content: space-between;
   padding: 5px 0 5px 20px;
@@ -97,7 +97,7 @@ export const SetListItem = styled.li`
   text-decoration: "none";
 `;
 
-export const ExerciseListItem = styled.li`
+export const ActivitySetItem = styled.li`
   display: flex;
   justify-content: space-between;
   padding: 5px 0 5px 30px;
