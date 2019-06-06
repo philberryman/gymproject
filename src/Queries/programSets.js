@@ -2,13 +2,27 @@ import gql from "graphql-tag";
 
 export const GET_PROGRAM_SETS = gql`
   query programSets($id: Int!) {
-    program_sets(where: { program_id: { _eq: $id } }) {
+    program_sets(where: { program_id: { _eq: 6 } }) {
       id
       program_id
       set {
         id
         name
+        set_exercises {
+          exercise {
+            name
+          }
+          id
+          reps
+          rest
+          weight
+          type
+        }
       }
+    }
+    programs(where: { id: { _eq: $id } }) {
+      id
+      name
     }
   }
 `;

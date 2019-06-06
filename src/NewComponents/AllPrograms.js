@@ -5,6 +5,15 @@ import { Link } from "react-router-dom";
 import { GET_PROGRAMS, DELETE_PROGRAM } from "../Queries/programs";
 
 import { AddProgram } from "./AddProgram";
+import {
+  CenteredContainer,
+  UnstyledList,
+  ProgramListItem,
+  UnStyledLink,
+  SmallButton,
+  ButtonGroup,
+} from "../Styles/styles.js";
+
 import { ListGroup, ListGroupItem, Grid, Row, Col } from "react-bootstrap";
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import { faSpinner } from "@fortawesome/free-solid-svg-icons";
@@ -35,56 +44,54 @@ export const AllPrograms = props => {
         if (data.programs.length === 0)
           return (
             <div>
-              <h3>No Todos Created Yet</h3>
+              <h3>No Programs Created Yet</h3>
               <AddProgram />
             </div>
           );
         let count = 0;
         return (
-          <div>
-            <Grid>
-              <Row>
-                <Col md={8} mdPush={2}>
-                  <ListGroup>
-                    {data.programs.map(program => (
-                      <ListGroupItem key={program.id}>
-                        {/* <ButtonG roup className="pull-right">
-                          <MarkTodo todo_id={todo.todo_id} />
-                          <DeleteTodo todo_id={todo.todo_id} />
-                        </ButtonGroup> */}
-                        <h4>
-                          {(count = count + 1)}.
-                          <Link to={`/programs/${program.id}`}>
-                            {" "}
-                            {program.name}
-                          </Link>
-                          <Mutation
-                            mutation={DELETE_PROGRAM}
-                            refetchQueries={[{ query: GET_PROGRAMS }]}
-                          >
-                            {deleteProgram => (
-                              <button
-                                onClick={() =>
-                                  onDelete(program.id, deleteProgram)
-                                }
-                              >
-                                Delete
-                              </button>
-                            )}
-                          </Mutation>
-                        </h4>
-                      </ListGroupItem>
-                    ))}
-                  </ListGroup>
-                  <ListGroup>
-                    <ListGroupItem>
-                      <AddProgram />
-                    </ListGroupItem>
-                  </ListGroup>
-                </Col>
-              </Row>
-            </Grid>
-          </div>
+          <CenteredContainer>
+            <UnstyledList>
+              {data.programs.map(program => (
+                <ProgramListItem key={program.id}>
+                  <UnStyledLink to={`/programs/${program.id}`}>
+                    {" "}
+                    {program.name}
+                  </UnStyledLink>
+                  <ButtonGroup>
+                    <SmallButton background="#9EB8E3">
+                      <UnStyledLink to={`/programs/${program.id}`}>
+                        View
+                      </UnStyledLink>
+                    </SmallButton>
+                    <SmallButton background="#3DE27F">
+                      <UnStyledLink to={`/programs/${program.id}`}>
+                        Do
+                      </UnStyledLink>
+                    </SmallButton>
+                  </ButtonGroup>
+
+                  {/* <Mutation
+                    mutation={DELETE_PROGRAM}
+                    refetchQueries={[{ query: GET_PROGRAMS }]}
+                  >
+                    {deleteProgram => (
+                      <button
+                        onClick={() => onDelete(program.id, deleteProgram)}
+                      >
+                        x
+                      </button>
+                    )}
+                  </Mutation> */}
+                </ProgramListItem>
+              ))}
+            </UnstyledList>
+            <ListGroup>
+              <ListGroupItem>
+                <AddProgram />
+              </ListGroupItem>
+            </ListGroup>
+          </CenteredContainer>
         );
       }}
     </Query>
