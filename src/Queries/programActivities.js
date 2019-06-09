@@ -11,7 +11,7 @@ export const GET_PROGRAM_ACTIVITIES = gql`
       activity {
         id
         name
-        activity_sets {
+        activity_sets(order_by: { order: asc }) {
           exercise {
             name
           }
@@ -21,6 +21,7 @@ export const GET_PROGRAM_ACTIVITIES = gql`
           sets
           type
           weight
+          order
         }
       }
     }

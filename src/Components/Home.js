@@ -12,11 +12,12 @@ export const Home = props => {
 
   return (
     <CenteredContainer>
-      <BigButton background="#3DE27F">Start Workout</BigButton>
-      <BigButton background="#9EB8E3">Manage Programs</BigButton>
-      <BigButton background="#EFBAA3">View Logs</BigButton>
+      <Link to="/programs">
+        <BigButton background="#3DE27F">Programs</BigButton>
+      </Link>
+      <BigButton background="#9EB8E3">Results</BigButton>
+      <BigButton background="#EFBAA3">Profile</BigButton>
 
-      <Link to="/programs">View Programs</Link>
       <button onClick={() => logout()}>log out</button>
     </CenteredContainer>
   );

@@ -11,6 +11,7 @@ import {
   UnStyledLink,
   SmallButton,
   ButtonGroup,
+  SubHeader,
 } from "../Styles/styles.js";
 
 import { ListGroup, ListGroupItem } from "react-bootstrap";
@@ -42,35 +43,35 @@ export const AllPrograms = props => {
           );
 
         return (
-          <CenteredContainer>
-            <UnstyledList>
-              {data.programs.map(program => (
-                <ProgramListItem key={program.id}>
-                  <UnStyledLink to={`/programs/${program.id}`}>
-                    {" "}
-                    {program.name}
-                  </UnStyledLink>
-                  <ButtonGroup>
-                    <SmallButton background="#9EB8E3">
-                      <UnStyledLink to={`/programs/${program.id}`}>
+          <>
+            <SubHeader> &lt; back</SubHeader>
+            <SubHeader>Your Programs</SubHeader>
+            <CenteredContainer>
+              <UnstyledList>
+                {data.programs.map(program => (
+                  <ProgramListItem key={program.id}>
+                    <UnStyledLink to={`/programs/${program.id}`}>
+                      {" "}
+                      {program.name}
+                    </UnStyledLink>
+                    <ButtonGroup>
+                      <SmallButton
+                        background="#EB7191"
+                        to={`/programs/${program.id}`}
+                      >
                         View
-                      </UnStyledLink>
-                    </SmallButton>
-                    <SmallButton background="#3DE27F">
-                      <UnStyledLink to={`/programs/${program.id}`}>
-                        Do
-                      </UnStyledLink>
-                    </SmallButton>
-                  </ButtonGroup>
-                </ProgramListItem>
-              ))}
-            </UnstyledList>
-            <ListGroup>
-              <ListGroupItem>
-                <AddProgram />
-              </ListGroupItem>
-            </ListGroup>
-          </CenteredContainer>
+                      </SmallButton>
+                    </ButtonGroup>
+                  </ProgramListItem>
+                ))}
+              </UnstyledList>
+              <ListGroup>
+                <ListGroupItem>
+                  <AddProgram />
+                </ListGroupItem>
+              </ListGroup>
+            </CenteredContainer>
+          </>
         );
       }}
     </Query>

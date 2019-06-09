@@ -7,6 +7,7 @@ import {
   ProgramListItem,
   ActivityItem,
   ActivitySetItem,
+  SubHeader,
 } from "../Styles/styles.js";
 
 import {
@@ -40,19 +41,17 @@ export const Program = ({ match, history }) => {
         }
 
         return (
-          <CenteredContainer>
-            <UnstyledList>
-              <ProgramListItem>
-                {programs[0].name}
-                <DeleteProgram program={programs[0]} history={history} />
-              </ProgramListItem>
-            </UnstyledList>
-            <ProgramActivities
-              programActivities={program_activities}
-              programId={programId}
-            />
-            <Link to="/programs">Back</Link>
-          </CenteredContainer>
+          <>
+            <SubHeader> &lt; back</SubHeader>
+            <SubHeader> {programs[0].name}</SubHeader>
+            <CenteredContainer>
+              <ProgramActivities
+                programActivities={program_activities}
+                programId={programId}
+              />
+              <Link to="/programs">Back</Link>
+            </CenteredContainer>
+          </>
         );
       }}
     </Query>
@@ -83,7 +82,6 @@ const RemoveFromProgram = ({ programSetId, programId }) => {
 
 const ProgramActivities = ({ programActivities, programId }) => {
   const [open, setOpen] = useState(null);
-
   return (
     <UnstyledList>
       {programActivities.map(programActivity => {
@@ -146,3 +144,37 @@ const DeleteProgram = ({ program, history }) => {
     </Mutation>
   );
 };
+
+// const ProgramActivities = ({ programActivities, programId }) => {
+//   const [open, setOpen] = useState(null);
+//   return (
+//     <UnstyledList>
+//       {programActivities.map(programActivity => {
+//         return (
+//           <React.Fragment key={programActivity.id}>
+//             <ActivityItem
+//               onClick={() =>
+//                 setOpen(programActivity.id === open ? null : programActivity.id)
+//               }
+//             >
+//               {programActivity.activity.name}
+//               <RemoveFromProgram
+//                 programSetId={programActivity.id}
+//                 programId={programId}
+//               />
+//             </ActivityItem>
+//             {programActivity.id === open && (
+//               <ActivitySets
+//                 activitySets={programActivity.activity.activity_sets}
+//               />
+//             )}
+//           </React.Fragment>
+//         );
+//       })}
+//       <AddProgramActivity
+//         programActivities={programActivities}
+//         programId={programId}
+//       />
+//     </UnstyledList>
+//   );
+// };

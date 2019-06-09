@@ -5,37 +5,43 @@ export const WholeScreen = styled.div`
   height: 100vh;
   height: calc(var(--vh, 1vh) * 100);
   width: 100vw;
-  background: #ffffff;
+  background: #4151a0;
 `;
 
 export const MainHeader = styled.div`
-  background: #f4f0f0;
-  color: #000000;
-  height:35px
+  background: #4151A0;
+  height:25px
   margin: 0;
   padding: 15px
   display: flex;
   justify-content: space-between;
+  color: #FFFDFD;
+`;
+
+export const SubHeader = styled.h2`
   font-family: Helvetica Neue;
   font-style: normal;
-  font-weight: 500;
-  font-size: 24px;
-  text-align: center;
+  font-weight: bold;
+  font-size: 18px;
+  line-height: 22px;
+  letter-spacing: 0.05em;
+  color: #fffdfd;
+  padding: 0;
+  margin: 0 0 15px 0;
 `;
 
 export const MainContainer = styled.div`
   height: calc(var(--vh, 1vh) * 100 - 105px);
-  margin: 15px
-  padding: 10px
-  background: #f9f7f7;
-  border: 1px solid #a3a1a1;
+  margin: 0 15px 15px 15px;
+  padding: 0 10px 10px 10px;
+  background: #4151a0;
+  border: 0;
   box-sizing: border-box;
-  box-shadow: 0px 4px 6px rgba(0, 0, 0, 0.25);
   flex-grow: 1;
 `;
 
 export const CenteredContainer = styled.div`
-  padding: 25px 0;
+  padding: 0;
   display: flex;
   flex-direction: column;
   align-items: center;
@@ -55,7 +61,7 @@ export const UnStyledLink = styled(Link)`
   &:link,
   &:active {
     text-decoration: none;
-    color: #000000;
+    color: #757070;
   }
 `;
 
@@ -66,15 +72,19 @@ export const ProgramListItem = styled.li`
   width: 85vw;
   min-height: 29px;
   margin: 10px 0 0 0;
-  background: #ebebeb;
-  border: 1px solid #d1cfcf;
+  background: #f9f7f7;
+  border: 1px solid #f4f4f4;
   box-sizing: border-box;
+  box-shadow: 1px 1px 2px rgba(0, 0, 0, 0.25);
+  border-radius: 5px;
   font-family: Helvetica Neue;
   font-style: normal;
-  font-weight: normal;
-  font-size: 12px;
-  line-height: 12px;
-  text-decoration: "none";
+  font-weight: bold;
+  font-size: 20px;
+  line-height: 24px;
+  letter-spacing: 0.05em;
+
+  color: #757070;
 `;
 
 export const ActivityItem = styled.li`
@@ -107,7 +117,6 @@ export const ActivitySetItem = styled.li`
   background: #c4c4c4;
   border: 1px solid #d1cfcf;
   border-width: 0 1px 1px 1px;
-
   box-sizing: border-box;
   font-family: Helvetica Neue;
   font-style: normal;
@@ -137,7 +146,7 @@ export const ButtonGroup = styled.div`
   display: flex;
 `;
 
-export const SmallButton = styled.div`
+export const SmallButton = styled(Link)`
   padding: 2px 2px 1px 2px;
   margin: 0 5px 0 0
   background: ${props => props.background || "palevioletred"};
@@ -163,18 +172,48 @@ export const SmallButton = styled.div`
 `;
 
 export const Logo = styled.div`
-  border: 1px solid #d6cfcf;
-  background: #eee9e9;
+  border: 0px
+  background: #4151a0;
   padding: 0 0 0 0;
   width: 195px;
-  height: 35px;
+  height: 18px;
 `;
 
 export const LogoText = styled.div`
-  padding: 3px 0 0 0;
+  padding: 0;
   margin: auto;
+  font-family: Helvetica Neue;
+  font-style: normal;
+  font-weight: bold;
+  font-size: 20px;
+  line-height: 18px;
+  text-align: left;
+  letter-spacing: 0.05em;
 `;
 
 export const Menu = styled.div`
   vertical-align: middle;
+`;
+
+export const DarkHeader = styled.h1`
+  display: flex;
+  justify-content: space-between;
+  padding: 5px 0 5px 30px;
+  width: 85vw;
+  min-height: 29px;
+  margin: 0;
+  background: #c4c4c4;
+  border: 1px solid #d1cfcf;
+  border-width: 0 1px 1px 1px;
+  box-sizing: border-box;
+  font-family: Helvetica Neue;
+  font-style: normal;
+  font-weight: normal;
+  font-size: 12px;
+  line-height: 12px;
+  text-decoration: "none";
+`;
+
+export const HeaderLabel = styled.div`
+  width: 50px;
 `;
