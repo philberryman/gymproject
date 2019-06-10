@@ -6,7 +6,7 @@ import { render, waitForElement } from "react-testing-library";
 import "jest-dom/extend-expect";
 import { toBeTruthy } from "jest-dom";
 
-import { AllPrograms } from "../NewComponents/AllPrograms";
+import { AllPrograms } from "../Components/AllPrograms";
 import { GET_PROGRAMS } from "../Queries/programs";
 
 // Mock graphql response

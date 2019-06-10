@@ -83,40 +83,66 @@ export const ProgramListItem = styled.li`
   font-size: 20px;
   line-height: 24px;
   letter-spacing: 0.05em;
-
   color: #757070;
 `;
 
 export const ActivityItem = styled.li`
   display: flex;
+  flex-direction: column;
   justify-content: space-between;
-  padding: 5px 0 5px 20px;
+  padding: 5px 0 5px 0;
   width: 85vw;
   min-height: 29px;
-  margin: 0;
-  background: #c4c4c4;
-  border: 1px solid #d1cfcf;
-  border-width: 0 1px 1px 1px;
-
+  margin: 10px;
+  background: #ffffff;
+  border: 0;
   box-sizing: border-box;
+  box-shadow: 1px 1px 2px rgba(0, 0, 0, 0.25);
+  border-radius: 5px;
   font-family: Helvetica Neue;
   font-style: normal;
   font-weight: bold;
-  font-size: 12px;
-  line-height: 12px;
-  text-decoration: "none";
+  font-size: 20px;
+  line-height: 24px;
+  letter-spacing: 0.05em;
+  color: #757070;
+`;
+
+export const ActivityHeader = styled.div`
+  display: flex;
+  justify-content: space-between;
+  margin: 0 10px;
+  padding: 0;
+  border: 0px;
+`;
+
+export const ActivityName = styled.h3`
+  margin: 0
+  padding: 0;
+`;
+
+export const OpenClose = styled.div`
+  margin: 0;
+  padding: 0;
+`;
+
+export const ActivitySetList = styled.ul`
+  border: 1px solid #d1cfcf;
+  border-width: 1px 0 0 0;
+  list-style: none;
+  padding: 0;
+  margin: 5px 0;
 `;
 
 export const ActivitySetItem = styled.li`
   display: flex;
   justify-content: space-between;
-  padding: 5px 0 5px 30px;
+  padding: 5px 15px 5px 20px;
   width: 85vw;
   min-height: 29px;
   margin: 0;
-  background: #c4c4c4;
-  border: 1px solid #d1cfcf;
-  border-width: 0 1px 1px 1px;
+  background: ${props => (props.open ? "#e95ea6" : "#FFFFFF")};
+  border: 0px;
   box-sizing: border-box;
   font-family: Helvetica Neue;
   font-style: normal;
@@ -216,4 +242,26 @@ export const DarkHeader = styled.h1`
 
 export const HeaderLabel = styled.div`
   width: 50px;
+`;
+
+export const UpDownArrow = styled.div`
+  color: #ffffff;
+  text-align: center;
+  padding: 3px 0;
+`;
+
+export const ActivityValue = styled.div`
+  color: ${props => (props.open ? "#FFFFFF" : "#000000")};
+  font-size: 12px;
+  width: 55px;
+  height: 20px;
+  line-height: 20px;
+  text-align: center;
+`;
+
+export const DoneDelete = styled.div`
+  display: flex;
+  flex-direction: column;
+  flex-grow: stretch;
+  justify-content: space-between;
 `;

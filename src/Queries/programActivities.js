@@ -72,3 +72,39 @@ export const DELETE_PROGRAM_ACTIVITY = gql`
     }
   }
 `;
+
+export const UPDATE_ACTIVITY_WEIGHT = gql`
+  mutation UpdateActivityExercise($id: Int!, $value: numeric!) {
+    update_activity_sets(
+      where: { id: { _eq: $id } }
+      _set: { weight: $value }
+    ) {
+      returning {
+        id
+        weight
+      }
+    }
+  }
+`;
+
+export const UPDATE_ACTIVITY_REPS = gql`
+  mutation UpdateActivityReps($id: Int!, $value: Int!) {
+    update_activity_sets(where: { id: { _eq: $id } }, _set: { reps: $value }) {
+      returning {
+        id
+        reps
+      }
+    }
+  }
+`;
+
+export const UPDATE_ACTIVITY_SETS = gql`
+  mutation UpdateActivitySets($id: Int!, $value: Int!) {
+    update_activity_sets(where: { id: { _eq: $id } }, _set: { sets: $value }) {
+      returning {
+        id
+        sets
+      }
+    }
+  }
+`;
