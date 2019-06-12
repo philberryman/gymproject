@@ -265,3 +265,23 @@ export const DoneDelete = styled.div`
   flex-grow: stretch;
   justify-content: space-between;
 `;
+
+export const AddSetLink = styled.div`
+  font-size: 12px;
+  width: 55px;
+  height: 20px;
+`;
+
+export const ActivityOrderButtons = styled.div`
+  display: flex;
+  flex-direction: column;
+  flex-grow: stretch;
+  justify-content: space-between;
+  width: 55px;
+`;
+
+export const ActivityOrderUpDown = styled.div`
+  font-size: 12px;
+  width: 10px;
+  height: 20px;
+`;

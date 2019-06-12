@@ -16,6 +16,8 @@ export const GET_PROGRAM_ACTIVITIES = gql`
             name
           }
           id
+          activity_id
+          exercise_id
           reps
           rest
           sets
@@ -105,6 +107,70 @@ export const UPDATE_ACTIVITY_SETS = gql`
         id
         sets
       }
+    }
+  }
+`;
+
+export const ACTIVITY_SET_UPDATE_ORDER = gql`
+  mutation UpdateActivitySetOrder(
+    $id: Int!
+    $activityId: Int!
+    $exerciseId: Int!
+    $sets: Int!
+    $weight: numeric!
+    $reps: Int!
+    $order: Int!
+    $newOrder: Int!
+    $switchId: Int!
+  ) {
+    update_activity_sets(
+      where: { id: { _eq: $switchId }, order: { _eq: $newOrder } }
+      _set: { order: $order }
+    ) {
+      returning {
+        id
+        order
+      }
+    }
+    delete_activity_sets(where: { id: { _eq: $id }, order: { _eq: $order } }) {
+      affected_rows
+    }
+    insert_activity_sets(
+      objects: {
+        id: $id
+        activity_id: $activityId
+        exercise_id: $exerciseId
+        weight: $weight
+        reps: $reps
+        sets: $sets
+        order: $newOrder
+      }
+    ) {
+      affected_rows
+    }
+  }
+`;
+
+export const ADD_ACTIVITY_SET = gql`
+  mutation AddActivitySet(
+    $activityId: Int!
+    $exerciseId: Int!
+    $sets: Int!
+    $weight: numeric!
+    $reps: Int!
+    $nextOrder: Int!
+  ) {
+    insert_activity_sets(
+      objects: {
+        activity_id: $activityId
+        exercise_id: $exerciseId
+        sets: $sets
+        weight: $weight
+        reps: $reps
+        order: $nextOrder
+      }
+    ) {
+      affected_rows
     }
   }
 `;

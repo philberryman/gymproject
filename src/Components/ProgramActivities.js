@@ -30,6 +30,7 @@ export const ProgramActivities = ({ programActivities, programId }) => {
             {programActivity.id === open && (
               <ProgramActivitySets
                 activitySets={programActivity.activity.activity_sets}
+                programId={programId}
               />
             )}
           </ActivityItem>
