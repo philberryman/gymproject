@@ -174,3 +174,11 @@ export const ADD_ACTIVITY_SET = gql`
     }
   }
 `;
+
+export const DELETE_ACTIVITY_SET = gql`
+  mutation deleteActivitySet($id: Int!) {
+    delete_activity_sets(where: { id: { _eq: $id } }) {
+      affected_rows
+    }
+  }
+`;

@@ -26,6 +26,7 @@ import {
   UPDATE_ACTIVITY_SETS,
   ADD_ACTIVITY_SET,
   ACTIVITY_SET_UPDATE_ORDER,
+  DELETE_ACTIVITY_SET,
 } from "../Queries/programActivities";
 
 // Takes an array and a position (currentOrder) of an item you want to move and returns the order values of the elements before and after the current element. Or null if end of array. Assumes array is already ordered (which it is from gql query)
@@ -294,9 +295,32 @@ export const ProgramActivitySets = ({ activitySets, programId }) => {
                         width="22"
                       />
                     </div>
-                    <div>
-                      <img src={TrashBin} alt="Delete" height="22" width="22" />
-                    </div>
+                    <Mutation
+                      mutation={DELETE_ACTIVITY_SET}
+                      refetchQueries={[
+                        {
+                          query: GET_PROGRAM_ACTIVITIES,
+                          variables: { id: programId },
+                        },
+                      ]}
+                    >
+                      {deleteActivitySet => (
+                        <div
+                          onClick={() =>
+                            deleteActivitySet({
+                              variables: { id: activitySet.id },
+                            })
+                          }
+                        >
+                          <img
+                            src={TrashBin}
+                            alt="Delete"
+                            height="22"
+                            width="22"
+                          />
+                        </div>
+                      )}
+                    </Mutation>
                   </>
                 ) : (
                   <div onClick={() => openActivity(activitySet.id)}>
