@@ -33,7 +33,7 @@ const componentElements = async () => {
       addTypename={false}
     >
       <MemoryRouter>
-        <ProgramActivities match={{ params: { id: 1 } }} />
+        <ProgramActivities />
       </MemoryRouter>
     </MockedProvider>
   );
@@ -48,8 +48,6 @@ const componentElements = async () => {
 beforeEach(() => window.history.pushState({}, "Test Title", "/programs/1"));
 
 test("renders without error", async () => {
-  const route = "/programs/1";
-  const path = "/programs/:id";
   const { activityLink } = await componentElements();
   expect(activityLink).toBeTruthy();
 });

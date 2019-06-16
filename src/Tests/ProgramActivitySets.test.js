@@ -5,7 +5,7 @@ import { render, waitForElement } from "react-testing-library";
 
 import "jest-dom/extend-expect";
 
-import { Program } from "../Components/Program";
+import { ProgramActivitySets } from "../Components/ProgramActivitySets";
 import {
   GET_PROGRAM_ACTIVITIES,
   GET_USER_ACTIVITIES,
@@ -15,6 +15,8 @@ import {
   mockProgramActivities,
   mockUserActivities,
 } from "./mockResponses/mockProgramActivities";
+
+import { activitySets } from "./mockObjects/activitySetsArray";
 
 // Mock graphql response
 
@@ -34,20 +36,22 @@ const componentElements = async () => {
       addTypename={false}
     >
       <MemoryRouter>
-        <Program match={{ params: { id: 1 } }} />
+        <ProgramActivitySets activitySets={activitySets} />
       </MemoryRouter>
     </MockedProvider>
   );
 
-  await waitForElement(() => utils.getByText(/Activity 1/i));
+  await waitForElement(() => utils.getByText(/50 KGs/i));
 
   return {
-    activityLink: utils.getByText(/Activity 1/i),
+    weight: utils.getByText(/50 KGs/i),
   };
 };
 
-it("should render without error", async () => {
-  const { activityLink } = await componentElements();
+beforeEach(() => window.history.pushState({}, "Test Title", "/programs/1"));
 
-  expect(activityLink).toBeTruthy();
+it("should render weight of set - 50 KGs", async () => {
+  const { weight } = await componentElements();
+
+  expect(weight).toBeTruthy();
 });

@@ -36,8 +36,7 @@
     },
     "coverageReporters": [
       "text"
-    ],
-    "testURL": "https://www.somthing.com/test.html"
+    ]
   },
   "scripts": {
     "start": "react-scripts start",

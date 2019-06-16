@@ -8,7 +8,6 @@ import {
 } from "../Queries/programActivities";
 
 export const AddProgramActivity = ({ programActivities, programId }) => {
-  console.log(programActivities);
   const addSetToProgram = (setId, addProgramSet) => {
     addProgramSet({
       variables: { setId, programId },

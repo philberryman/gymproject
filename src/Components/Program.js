@@ -1,14 +1,14 @@
 import React from "react";
-import { Query, Mutation } from "react-apollo";
+import { Query } from "react-apollo";
 import { Link } from "react-router-dom";
 import { CenteredContainer, SubHeader } from "../Styles/styles.js";
 
 import {
   GET_PROGRAM_ACTIVITIES,
-  DELETE_PROGRAM_ACTIVITY,
+  // DELETE_PROGRAM_ACTIVITY,
 } from "../Queries/programActivities";
 
-import { DELETE_PROGRAM, GET_PROGRAMS } from "../Queries/programs";
+// import { DELETE_PROGRAM, GET_PROGRAMS } from "../Queries/programs";
 
 import { AddProgramActivity } from "./AddProgramActivity";
 import { ProgramActivities } from "./ProgramActivities";
@@ -52,49 +52,49 @@ export const Program = ({ match, history }) => {
   );
 };
 
-const RemoveFromProgram = ({ programSetId, programId }) => {
-  return (
-    <Mutation
-      mutation={DELETE_PROGRAM_ACTIVITY}
-      refetchQueries={[
-        { query: GET_PROGRAM_ACTIVITIES, variables: { id: programId } },
-      ]}
-    >
-      {deleteProgramSet => (
-        <button
-          onClick={e => {
-            e.stopPropagation();
-            deleteProgramSet({ variables: { programSetId } });
-          }}
-        >
-          Remove From Program
-        </button>
-      )}
-    </Mutation>
-  );
-};
+// const RemoveFromProgram = ({ programSetId, programId }) => {
+//   return (
+//     <Mutation
+//       mutation={DELETE_PROGRAM_ACTIVITY}
+//       refetchQueries={[
+//         { query: GET_PROGRAM_ACTIVITIES, variables: { id: programId } },
+//       ]}
+//     >
+//       {deleteProgramSet => (
+//         <button
+//           onClick={e => {
+//             e.stopPropagation();
+//             deleteProgramSet({ variables: { programSetId } });
+//           }}
+//         >
+//           Remove From Program
+//         </button>
+//       )}
+//     </Mutation>
+//   );
+// };
 
-const DeleteProgram = ({ program, history }) => {
-  const onDelete = (programId, deleteProgram) => {
-    console.log(programId);
-    deleteProgram({
-      variables: { programId },
-    })
-      .then(() => history.push(`/home`))
-      .catch(e => console.log(e));
-  };
+// const DeleteProgram = ({ program, history }) => {
+//   const onDelete = (programId, deleteProgram) => {
+//     console.log(programId);
+//     deleteProgram({
+//       variables: { programId },
+//     })
+//       .then(() => history.push(`/home`))
+//       .catch(e => console.log(e));
+//   };
 
-  return (
-    <Mutation
-      mutation={DELETE_PROGRAM}
-      refetchQueries={[{ query: GET_PROGRAMS }]}
-    >
-      {deleteProgram => (
-        <button onClick={() => onDelete(program.id, deleteProgram)}>x</button>
-      )}
-    </Mutation>
-  );
-};
+//   return (
+//     <Mutation
+//       mutation={DELETE_PROGRAM}
+//       refetchQueries={[{ query: GET_PROGRAMS }]}
+//     >
+//       {deleteProgram => (
+//         <button onClick={() => onDelete(program.id, deleteProgram)}>x</button>
+//       )}
+//     </Mutation>
+//   );
+// };
 
 // const ProgramActivities = ({ programActivities, programId }) => {
 //   const [open, setOpen] = useState(null);

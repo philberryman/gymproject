@@ -14,7 +14,7 @@ import {
 import { ProgramActivitySets } from "./ProgramActivitySets";
 import { AddProgramActivity } from "./AddProgramActivity";
 
-export const ProgramActivities = ({ programActivities, match }) => {
+export const ProgramActivities = () => {
   var currentUrl = new Url(window.location);
   const programId = Number(currentUrl.pathname.split("/")[2]);
   const [open, setOpen] = useState(null);
