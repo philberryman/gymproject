@@ -51,7 +51,6 @@ export const AllPrograms = props => {
                 {data.programs.map(program => (
                   <ProgramListItem key={program.id}>
                     <UnStyledLink to={`/programs/${program.id}`}>
-                      {" "}
                       {program.name}
                     </UnStyledLink>
                     <ButtonGroup>

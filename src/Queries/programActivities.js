@@ -1,7 +1,7 @@
 import gql from "graphql-tag";
 
 export const GET_PROGRAM_ACTIVITIES = gql`
-  query programSets($id: Int!) {
+  query programActivities($id: Int!) {
     program_activities(where: { program_id: { _eq: $id } }) {
       id
       program {

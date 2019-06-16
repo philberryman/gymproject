@@ -8,27 +8,12 @@ import { toBeTruthy } from "jest-dom";
 
 import { AllPrograms } from "../Components/AllPrograms";
 import { GET_PROGRAMS } from "../Queries/programs";
-
-// Mock graphql response
-const mockData = {
-  data: {
-    programs: [
-      {
-        id: 1,
-        name: "Program 1",
-      },
-      {
-        id: 2,
-        name: "Program 2",
-      },
-    ],
-  },
-};
+import { mockPrograms } from "./mockResponses/mockPrograms";
 
 const componentElements = async () => {
   const utils = render(
     <MockedProvider
-      mocks={[{ request: { query: GET_PROGRAMS }, result: mockData }]}
+      mocks={[{ request: { query: GET_PROGRAMS }, result: mockPrograms }]}
       addTypename={false}
     >
       <MemoryRouter>
