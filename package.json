@@ -23,7 +23,8 @@
   },
   "jest": {
     "collectCoverageFrom": [
-      "src/**/*.{js,jsx,ts,tsx}",
+      "src/Components/*.{js,jsx,ts,tsx}",
+      "src/Components/ActivitySetsw/*.{js,jsx,ts,tsx}",
       "!<rootDir>/node_modules/"
     ],
     "coverageThreshold": {
@@ -41,7 +42,8 @@
   "scripts": {
     "start": "react-scripts start",
     "build": "react-scripts build",
-    "test": "react-scripts test",
+    "test": "react-scripts test --verbose",
+    "coverage": "react-scripts test --coverage --watchAll",
     "eject": "react-scripts eject",
     "storybook": "start-storybook -p 6006",
     "build-storybook": "build-storybook"

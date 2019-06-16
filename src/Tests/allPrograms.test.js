@@ -4,7 +4,6 @@ import { MemoryRouter } from "react-router";
 import { render, waitForElement } from "react-testing-library";
 
 import "jest-dom/extend-expect";
-import { toBeTruthy } from "jest-dom";
 
 import { AllPrograms } from "../Components/AllPrograms";
 import { GET_PROGRAMS } from "../Queries/programs";
@@ -31,16 +30,18 @@ const componentElements = async () => {
   };
 };
 
-it("should render without error", async () => {
-  const {
-    programLink,
-    submitButton,
-    programNameInput,
-  } = await componentElements();
+describe("matching cities to foods", () => {
+  it("should render without error", async () => {
+    const {
+      programLink,
+      submitButton,
+      programNameInput,
+    } = await componentElements();
 
-  expect(programLink).toBeTruthy();
-  expect(submitButton).toBeTruthy();
-  expect(programNameInput).toBeTruthy();
+    expect(programLink).toBeTruthy();
+    expect(submitButton).toBeTruthy();
+    expect(programNameInput).toBeTruthy();
+  });
 });
 
 // it("submit is disabled when input box is empty", async () => {});

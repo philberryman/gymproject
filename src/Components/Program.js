@@ -8,7 +8,7 @@ import {
   // DELETE_PROGRAM_ACTIVITY,
 } from "../Queries/programActivities";
 
-// import { DELETE_PROGRAM, GET_PROGRAMS } from "../Queries/programs";
+//  import { DELETE_PROGRAM, GET_PROGRAMS } from "../Queries/programs";
 
 import { AddProgramActivity } from "./AddProgramActivity";
 import { ProgramActivities } from "./ProgramActivities";
