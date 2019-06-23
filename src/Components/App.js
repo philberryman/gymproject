@@ -118,9 +118,10 @@ export const App = () => {
                 component={props => <Home auth={auth} {...props} />}
               />
             </Switch>
+            <div>Debug variables:</div>
+            <div>{token.value}</div>
+            <div>{host()}</div>
           </MainContainer>
-          <div>{token.value}</div>
-          <div>{host}</div>
         </WholeScreen>
       </Router>
     </ApolloProvider>
