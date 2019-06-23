@@ -1,3 +1,5 @@
 
 [context.production.environment]
-  REACT_APP_ENVIRONMENT = "netlify"
+  REACT_APP_AUTH0_RETURN_TO="https://projectgym.netlify.com"
+  REACT_APP_AUTH0_CLIENT_ID="21o589q6G8Un2aVO08VTIgqg240ucnlj"
+  REACT_APP_ENVIRONMENT="netlify"
