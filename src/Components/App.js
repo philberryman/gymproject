@@ -43,7 +43,7 @@ function PrivateRoute({ component: Component, ...rest }) {
 export const App = () => {
   const ID_TOKEN = localStorage.getItem("id_token");
 
-  console.log(process.env.REACT_APP_ENVIRONMENT);
+  console.log("env: " + process.env.REACT_APP_ENVIRONMENT);
 
   const host = () => {
     if (process.env.REACT_APP_ENVIRONMENT === "local") {
@@ -58,7 +58,7 @@ export const App = () => {
     }
   };
 
-  console.log(host());
+  console.log("host: " + host());
 
   const client = new ApolloClient({
     uri: host(),
