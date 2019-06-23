@@ -1,7 +1,13 @@
 import React from "react";
 import { MockedProvider } from "react-apollo/test-utils";
 import { MemoryRouter } from "react-router";
-import { render, waitForElement } from "react-testing-library";
+import {
+  render,
+  waitForElement,
+  cleanup,
+  fireEvent,
+  getByAltText,
+} from "react-testing-library";
 
 import "jest-dom/extend-expect";
 
@@ -43,15 +49,70 @@ const componentElements = async () => {
 
   await waitForElement(() => utils.getByText(/50 KGs/i));
 
-  return {
-    weight: utils.getByText(/50 KGs/i),
-  };
+  return utils;
+
+  // {
+  //   weight: utils.getByText(/50 KGs/i),
+  //   reps: utils.getByText(/10 reps/i),
+  //   sets: utils.getByText(/4 sets/i),
+  // };
 };
 
 beforeEach(() => window.history.pushState({}, "Test Title", "/programs/1"));
+afterEach(cleanup);
 
-it("should render weight of set - 50 KGs", async () => {
-  const { weight } = await componentElements();
-
+it("should show weight of 50kg", async () => {
+  const utils = await componentElements();
+  const weight = utils.getByText(/50 Kgs/i);
   expect(weight).toBeTruthy();
+});
+
+it("should show 10 reps", async () => {
+  const utils = await componentElements();
+  const reps = utils.getByText(/10 reps/i);
+  expect(reps).toBeTruthy();
+});
+
+it("should show 4 sets", async () => {
+  const utils = await componentElements();
+  const sets = utils.getByText(/4 sets/i);
+  expect(sets).toBeTruthy();
+});
+
+it("should show open to show edit controls when edit is clicked", async () => {
+  const utils = await componentElements();
+  const editOpened = fireEvent(
+    utils.getByAltText("Edit"),
+    new MouseEvent("click", {
+      bubbles: true,
+      cancelable: true,
+    })
+  );
+  const editWeight = await utils.getByAltText("increase weight");
+  const editReps = await utils.getByAltText("increase reps");
+  const editSets = await utils.getByAltText("increase sets");
+
+  expect(editWeight).toBeTruthy();
+  expect(editReps).toBeTruthy();
+  expect(editSets).toBeTruthy();
+});
+
+it("should close show edit controls when done is clicked", async () => {
+  const utils = await componentElements();
+  fireEvent(
+    utils.getByAltText("Edit"),
+    new MouseEvent("click", {
+      bubbles: true,
+      cancelable: true,
+    })
+  );
+  await utils.getByAltText("increase weight");
+  fireEvent(
+    utils.getByAltText("Done"),
+    new MouseEvent("click", {
+      bubbles: true,
+      cancelable: true,
+    })
+  );
+  expect(utils.queryByAltText("increase weight")).toBeNull();
 });

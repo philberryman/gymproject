@@ -69,8 +69,8 @@ export default class Auth {
     // Clear Access Token and ID Token from local storage
 
     this.auth0.logout({
-      returnTo: "http://localhost:3000",
-      clientID: "21o589q6G8Un2aVO08VTIgqg240ucnlj",
+      returnTo: process.env.REACT_APP_AUTH0_RETURN_TO,
+      clientID: process.env.REACT_APP_AUTH0_CLIENT_ID,
     });
 
     localStorage.removeItem("access_token");

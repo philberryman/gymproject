@@ -55,7 +55,7 @@ export const ActivityOrderUpDown = ({
                     });
                   }}
                   src={direction === "up" ? ChevronUp : ChevronDown}
-                  alt="Plus"
+                  alt={direction === "up" ? "Move Up" : "Move Down"}
                   height="22"
                   width="22"
                 />

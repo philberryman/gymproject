@@ -30,6 +30,10 @@ export const ProgramActivitySets = ({ activitySets }) => {
   const [openId, setOpenId] = useState("");
   const openActivity = id => setOpenId(id === openId ? null : id);
 
+  if (activitySets.length === 0) {
+    return <p>Hello</p>;
+  }
+
   return (
     <>
       <ActivitySetList>

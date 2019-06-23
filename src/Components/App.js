@@ -43,12 +43,25 @@ function PrivateRoute({ component: Component, ...rest }) {
 export const App = () => {
   const ID_TOKEN = localStorage.getItem("id_token");
 
+  console.log(process.env.REACT_APP_ENVIRONMENT);
+
+  const host = () => {
+    if (process.env.REACT_APP_ENVIRONMENT === "local") {
+      return (
+        window.location.protocol +
+        "//" +
+        window.location.hostname +
+        ":7070/v1/graphql"
+      );
+    } else {
+      return "https://projectgym-hasura.herokuapp.com/v1/graphql";
+    }
+  };
+
+  console.log(host());
+
   const client = new ApolloClient({
-    uri:
-      window.location.protocol +
-      "//" +
-      window.location.hostname +
-      ":7070/v1/graphql",
+    uri: host(),
     headers: {
       Authorization: `Bearer ${ID_TOKEN}`,
     },

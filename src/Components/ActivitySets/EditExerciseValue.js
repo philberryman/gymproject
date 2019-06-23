@@ -37,7 +37,12 @@ export const EditExerciseValue = ({
           }}
         >
           {operator === "plus" ? (
-            <img src={PlusCircle} alt="Plus" height="22" width="22" />
+            <img
+              src={PlusCircle}
+              alt={"increase " + field}
+              height="22"
+              width="22"
+            />
           ) : (
             <img src={MinusCircle} alt="Minus" height="22" width="22" />
           )}
