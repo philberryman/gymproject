@@ -7,7 +7,7 @@ export const Header = props => {
   return (
     <MainHeader>
       <Logo>
-        <LogoText>GYM PROJECT</LogoText>
+        <LogoText>GYM PROJECT!!</LogoText>
       </Logo>
       <Menu>
         <img src={menu} alt="menu" />
