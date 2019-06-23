@@ -120,6 +120,7 @@ export const App = () => {
             </Switch>
           </MainContainer>
           <div>{token.value}</div>
+          <div>{host}</div>
         </WholeScreen>
       </Router>
     </ApolloProvider>
