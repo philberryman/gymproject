@@ -3,8 +3,9 @@ import { Route, Router, Switch } from "react-router-dom";
 import { Callback } from "./Callback";
 import { Header } from "./Header";
 import { Login } from "./Login";
-import { AllPrograms } from "./AllPrograms";
-import { Program } from "./Program";
+import { AllPrograms } from "./Programs/AllPrograms";
+import { Program } from "./Programs/Program";
+import { AddProgram } from "./Programs/AddProgram";
 // import { SetExercises } from "./SetExercises";
 // import { AllSets } from "./AllSets";
 // import { AllExercises } from "./AllExercises";
@@ -90,6 +91,10 @@ export const App = () => {
                 path="/programs/:id/:setId"
                 component={props => <SetExercises auth={auth} {...props} />}
               /> */}
+              <PrivateRoute
+                path="/programs/create"
+                component={props => <AddProgram auth={auth} {...props} />}
+              />
               <PrivateRoute
                 path="/programs/:id"
                 component={props => <Program auth={auth} {...props} />}
