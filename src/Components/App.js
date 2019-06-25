@@ -4,6 +4,8 @@ import { Callback } from "./Callback";
 import { Header } from "./Header";
 import { Login } from "./Login";
 import { AllPrograms } from "./Programs/AllPrograms";
+import { AllExercises } from "./Exercises/AllExercises";
+
 import { Program } from "./Programs/Program";
 import { AddProgram } from "./Programs/AddProgram";
 // import { SetExercises } from "./SetExercises";
@@ -102,6 +104,10 @@ export const App = () => {
               <PrivateRoute
                 path="/programs"
                 component={props => <AllPrograms auth={auth} {...props} />}
+              />
+              <PrivateRoute
+                path="/exercises"
+                component={props => <AllExercises auth={auth} {...props} />}
               />
               {/* <PrivateRoute
                 path="/sets"
