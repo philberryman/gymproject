@@ -55,7 +55,7 @@ export const AllExercises = props => {
                         background="#EB7191"
                         to={`/programs/${exercise.id}`}
                       >
-                        View
+                        View d
                       </SmallButton>
                     </ButtonGroup>
                   </ProgramListItem>

@@ -24,7 +24,9 @@
   "jest": {
     "collectCoverageFrom": [
       "src/Components/*.{js,jsx,ts,tsx}",
-      "src/Components/ActivitySetsw/*.{js,jsx,ts,tsx}",
+      "src/Components/ActivitySets/*.{js,jsx,ts,tsx}",
+      "src/Components/Exercises/*.{js,jsx,ts,tsx}",
+      "src/Components/Programs/*.{js,jsx,ts,tsx}",
       "!<rootDir>/node_modules/"
     ],
     "coverageThreshold": {

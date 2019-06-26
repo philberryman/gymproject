@@ -10,7 +10,7 @@ export const GET_EXERCISES = gql`
   }
 `;
 
-export const ADD_EXERCISE = gql`
+export const CREATE_EXERCISE = gql`
   mutation addExercise($name: String!, $description: String!) {
     insert_exercises(objects: { name: $name, description: $description }) {
       returning {

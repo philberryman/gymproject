@@ -36,7 +36,7 @@ export const Program = ({ match, history }) => {
 
         return (
           <>
-            <SubHeader> &lt; back</SubHeader>
+            <SubHeader> &lt; back back</SubHeader>
             <SubHeader> {programs[0].name}</SubHeader>
             <CenteredContainer>
               <ProgramActivities

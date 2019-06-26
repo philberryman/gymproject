@@ -5,6 +5,7 @@ import { Header } from "./Header";
 import { Login } from "./Login";
 import { AllPrograms } from "./Programs/AllPrograms";
 import { AllExercises } from "./Exercises/AllExercises";
+import { CreateExercise } from "./Exercises/CreateExercise";
 
 import { Program } from "./Programs/Program";
 import { AddProgram } from "./Programs/AddProgram";
@@ -104,6 +105,10 @@ export const App = () => {
               <PrivateRoute
                 path="/programs"
                 component={props => <AllPrograms auth={auth} {...props} />}
+              />
+              <PrivateRoute
+                path="/exercises/create"
+                component={props => <CreateExercise auth={auth} {...props} />}
               />
               <PrivateRoute
                 path="/exercises"

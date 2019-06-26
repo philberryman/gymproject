@@ -4,7 +4,6 @@ import { MemoryRouter } from "react-router";
 import { render, waitForElement } from "react-testing-library";
 
 import "jest-dom/extend-expect";
-import { toBeTruthy } from "jest-dom";
 
 import { Program } from "./Program";
 import {
