@@ -1,10 +1,13 @@
-import React, { useContext } from "react";
+import React from "react";
 import { Route, Router, Switch } from "react-router-dom";
 import { Callback } from "./Callback";
-import { Header } from "./Header";
+import { Header } from "./Header/Header";
 import { Login } from "./Login";
-import { AllPrograms } from "./Programs/AllPrograms";
+import { Programs } from "./Programs/Programs";
 import { AllExercises } from "./Exercises/AllExercises";
+import { AllActivities } from "./Activities/AllActivities";
+import { CreateActivity } from "./Activities/CreateActivity";
+
 import { CreateExercise } from "./Exercises/CreateExercise";
 
 import { Program } from "./Programs/Program";
@@ -21,8 +24,6 @@ import history from "../history";
 
 import ApolloClient from "apollo-boost";
 import { ApolloProvider } from "react-apollo";
-
-import { TokenContext } from "../index";
 
 const auth = new Auth();
 const { isAuthenticated } = auth;
@@ -71,9 +72,9 @@ export const App = () => {
     },
   });
 
-  // Only being used to force re-render on login. Should refactor this to cleaner solution
-  const token = useContext(TokenContext);
-  //  ^^^^^^^^
+  // // Only being used to force re-render on login. Should refactor this to cleaner solution
+  // const token = useContext(TokenContext);
+  // //  ^^^^^^^^
 
   return (
     <ApolloProvider client={client}>
@@ -86,14 +87,6 @@ export const App = () => {
                 path="/home"
                 render={props => <Home auth={auth} {...props} />}
               />
-              {/* <PrivateRoute
-                path="/sets/:setId"
-                component={props => <SetExercises auth={auth} {...props} />}
-              />
-              <PrivateRoute
-                path="/programs/:id/:setId"
-                component={props => <SetExercises auth={auth} {...props} />}
-              /> */}
               <PrivateRoute
                 path="/programs/create"
                 component={props => <AddProgram auth={auth} {...props} />}
@@ -104,7 +97,7 @@ export const App = () => {
               />
               <PrivateRoute
                 path="/programs"
-                component={props => <AllPrograms auth={auth} {...props} />}
+                component={props => <Programs auth={auth} {...props} />}
               />
               <PrivateRoute
                 path="/exercises/create"
@@ -113,6 +106,14 @@ export const App = () => {
               <PrivateRoute
                 path="/exercises"
                 component={props => <AllExercises auth={auth} {...props} />}
+              />
+              <PrivateRoute
+                path="/activities/create"
+                component={props => <CreateActivity auth={auth} {...props} />}
+              />
+              <PrivateRoute
+                path="/activities"
+                component={props => <AllActivities auth={auth} {...props} />}
               />
               {/* <PrivateRoute
                 path="/sets"
@@ -134,9 +135,9 @@ export const App = () => {
                 component={props => <Home auth={auth} {...props} />}
               />
             </Switch>
-            <div>Debug variables:</div>
+            {/* <div>Debug variables:</div>
             <div>{token.value}</div>
-            <div>{host()}</div>
+            <div>{host()}</div> */}
           </MainContainer>
         </WholeScreen>
       </Router>

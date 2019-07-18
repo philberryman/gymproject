@@ -1,7 +1,7 @@
 import React from "react";
 
-import { MainHeader, Logo, Menu, LogoText } from "../Styles/styles.js";
-import menu from "../assets/menu.svg";
+import { MainHeader, Logo, Menu, LogoText } from "./styles.js";
+import menu from "../../assets/menu.svg";
 
 export const Header = props => {
   return (

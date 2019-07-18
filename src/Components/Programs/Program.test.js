@@ -6,10 +6,13 @@ import { render, waitForElement } from "react-testing-library";
 import "jest-dom/extend-expect";
 
 import { Program } from "./Program";
+import { theme } from "../../Theme/index.js";
+import { ThemeProvider } from "styled-components";
+
 import {
   GET_PROGRAM_ACTIVITIES,
   GET_USER_ACTIVITIES,
-} from "../../Queries/programActivities";
+} from "../ProgramActivities/queries";
 
 import {
   mockProgramActivities,
@@ -34,7 +37,9 @@ const componentElements = async () => {
       addTypename={false}
     >
       <MemoryRouter>
-        <Program match={{ params: { id: 1 } }} />
+        <ThemeProvider theme={theme}>
+          <Program match={{ params: { id: 1 } }} />
+        </ThemeProvider>
       </MemoryRouter>
     </MockedProvider>
   );

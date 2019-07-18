@@ -1,5 +1,5 @@
 import React, { useState } from "react";
-import { GET_EXERCISES } from "../../Queries/exercises";
+import { GET_EXERCISES } from "./queries";
 
 export const ExerciseForm = ({ onSubmit, history }) => {
   const [name, setName] = useState("");

@@ -1,15 +1,15 @@
 import React, { useState } from "react";
 import { Query } from "react-apollo";
-import { GET_PROGRAM_ACTIVITIES } from "../Queries/programActivities";
+import { GET_PROGRAM_ACTIVITIES } from "./queries.js";
 import Url from "url-parse";
 
 import {
+  ProgramList,
   UnstyledList,
-  ActivityItem,
   ActivityHeader,
   ActivityName,
   OpenClose,
-} from "../Styles/styles.js";
+} from "./styles.js";
 
 import { ProgramActivitySets } from "./ProgramActivitySets";
 import { AddProgramActivity } from "./AddProgramActivity";
@@ -42,9 +42,9 @@ export const ProgramActivities = () => {
 
         return (
           <UnstyledList>
-            {program_activities.map(programActivity => {
+            {program_activities.map((programActivity, index) => {
               return (
-                <ActivityItem key={programActivity.id}>
+                <ProgramList key={programActivity.id}>
                   <ActivityHeader
                     onClick={() =>
                       setOpen(
@@ -62,7 +62,7 @@ export const ProgramActivities = () => {
                       programId={programId}
                     />
                   )}
-                </ActivityItem>
+                </ProgramList>
               );
             })}
             <AddProgramActivity

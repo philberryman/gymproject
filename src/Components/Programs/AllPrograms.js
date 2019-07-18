@@ -1,23 +1,24 @@
 import React from "react";
 import { Query } from "react-apollo";
+import { Link } from "react-router-dom";
 
-import { GET_PROGRAMS } from "../../Queries/programs";
+import { GET_PROGRAMS } from "./queries";
 
 import { AddProgram } from "./AddProgram";
 import {
-  CenteredContainer,
-  UnstyledList,
+  ProgramList,
   ProgramListItem,
+  ProgramListDivider,
   UnStyledLink,
   SmallButton,
   ButtonGroup,
-  SubHeader,
-} from "../../Styles/styles.js";
+  ProgramsHeader,
+} from "./styles.js";
 
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import { faSpinner } from "@fortawesome/free-solid-svg-icons";
 
-export const AllPrograms = props => {
+export const AllPrograms = (auth, ...props) => {
   return (
     <Query query={GET_PROGRAMS}>
       {({ loading, error, data }) => {
@@ -43,27 +44,28 @@ export const AllPrograms = props => {
 
         return (
           <>
-            <SubHeader> &lt; back</SubHeader>
-            <SubHeader>Your Programs</SubHeader>
-            <CenteredContainer>
-              <UnstyledList>
-                {data.programs.map(program => (
-                  <ProgramListItem key={program.id}>
+            <ProgramList>
+              <ProgramsHeader>Your Programs</ProgramsHeader>
+
+              {data.programs.map(program => (
+                <React.Fragment key={program.id}>
+                  <ProgramListItem>
                     <UnStyledLink to={`/programs/${program.id}`}>
                       {program.name}
                     </UnStyledLink>
                     <ButtonGroup>
-                      <SmallButton
-                        background="#EB7191"
-                        to={`/programs/${program.id}`}
-                      >
-                        View
-                      </SmallButton>
+                      <Link to={`/programs/${program.id}`}>
+                        <SmallButton>View</SmallButton>
+                      </Link>
                     </ButtonGroup>
                   </ProgramListItem>
-                ))}
-              </UnstyledList>
-            </CenteredContainer>
+                  {program.id !==
+                    data.programs[data.programs.length - 1].id && (
+                    <ProgramListDivider />
+                  )}
+                </React.Fragment>
+              ))}
+            </ProgramList>
           </>
         );
       }}

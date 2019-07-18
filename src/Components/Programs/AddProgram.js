@@ -1,6 +1,6 @@
 import React from "react";
 import { Mutation } from "react-apollo";
-import { ADD_PROGRAM } from "../../Queries/programs";
+import { ADD_PROGRAM } from "./queries";
 import { ProgramForm } from "./ProgramForm";
 
 export const AddProgram = ({ history }) => {

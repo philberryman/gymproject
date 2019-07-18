@@ -11,11 +11,13 @@ import {
 
 import "jest-dom/extend-expect";
 
-import { ProgramActivitySets } from "../Components/ProgramActivitySets";
+import { ProgramActivitySets } from "../Components/ProgramActivities/ProgramActivitySets";
+import { theme } from "../Theme/index.js";
+import { ThemeProvider } from "styled-components";
 import {
   GET_PROGRAM_ACTIVITIES,
   GET_USER_ACTIVITIES,
-} from "../Queries/programActivities";
+} from "../Components/ProgramActivities/queries";
 
 import {
   mockProgramActivities,
@@ -42,7 +44,9 @@ const componentElements = async () => {
       addTypename={false}
     >
       <MemoryRouter>
-        <ProgramActivitySets activitySets={activitySets} />
+        <ThemeProvider theme={theme}>
+          <ProgramActivitySets activitySets={activitySets} />
+        </ThemeProvider>
       </MemoryRouter>
     </MockedProvider>
   );

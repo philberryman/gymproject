@@ -5,7 +5,7 @@ import Url from "url-parse";
 import {
   GET_PROGRAM_ACTIVITIES,
   ACTIVITY_SET_UPDATE_ORDER,
-} from "../../Queries/programActivities";
+} from "../ProgramActivities/queries";
 
 import { UpDownArrow } from "../../Styles/styles.js";
 

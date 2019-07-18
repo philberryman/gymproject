@@ -5,7 +5,7 @@ import {
   GET_PROGRAM_ACTIVITIES,
   GET_USER_ACTIVITIES,
   ADD_ACTIVITY_TO_PROGRAM,
-} from "../Queries/programActivities";
+} from "./queries";
 
 export const AddProgramActivity = ({ programActivities, programId }) => {
   const addSetToProgram = (setId, addProgramSet) => {

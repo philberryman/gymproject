@@ -5,7 +5,7 @@ import Url from "url-parse";
 import {
   GET_PROGRAM_ACTIVITIES,
   ADD_ACTIVITY_SET,
-} from "../../Queries/programActivities";
+} from "../ProgramActivities/queries";
 
 import { AddSetLink } from "../../Styles/styles.js";
 

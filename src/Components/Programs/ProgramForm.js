@@ -1,5 +1,5 @@
 import React, { useState } from "react";
-import { GET_PROGRAMS } from "../../Queries/programs";
+import { GET_PROGRAMS } from "./queries";
 
 export const ProgramForm = ({ onSubmit, history }) => {
   const [name, setName] = useState("");

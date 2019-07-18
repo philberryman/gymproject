@@ -8,6 +8,7 @@
     "@fortawesome/react-fontawesome": "^0.1.3",
     "apollo-boost": "^0.4.2",
     "auth0-js": "^9.8.0",
+    "babel-loader": "^8.0.6",
     "core-js": "^3.1.3",
     "graphql": "^14.0.2",
     "history": "^4.7.2",
@@ -18,12 +19,14 @@
     "react-headroom": "^2.2.8",
     "react-router-dom": "^4.3.1",
     "react-scripts": "3.0.1",
+    "storybook-styled-components": "^1.1.4",
     "styled-components": "^4.2.1",
     "url-parse": "^1.4.7"
   },
   "jest": {
     "collectCoverageFrom": [
       "src/Components/*.{js,jsx,ts,tsx}",
+      "src/Components/Activities/*.{js,jsx,ts,tsx}",
       "src/Components/ActivitySets/*.{js,jsx,ts,tsx}",
       "src/Components/Exercises/*.{js,jsx,ts,tsx}",
       "src/Components/Programs/*.{js,jsx,ts,tsx}",
@@ -45,11 +48,11 @@
     "start": "REACT_APP_AUTH0_RETURN_TO=http://localhost:3000 REACT_APP_AUTH0_CLIENT_ID=21o589q6G8Un2aVO08VTIgqg240ucnlj REACT_APP_ENVIRONMENT=local react-scripts start",
     "build:local": "react-scripts build",
     "build:netlify": "react-scripts build",
-    "test": "react-scripts test --verbose",
+    "test": "react-scripts test --verbose --outputFile='/users/philberryman/touchBarJest/testOutput.json' --json --watchAll",
     "coverage": "react-scripts test --coverage --watchAll",
     "eject": "react-scripts eject",
-    "storybook": "start-storybook -p 6006",
-    "build-storybook": "build-storybook"
+    "storybook": "start-storybook -p 9009 -s public",
+    "build-storybook": "build-storybook -s public"
   },
   "eslintConfig": {
     "extends": "react-app"
@@ -67,11 +70,18 @@
     ]
   },
   "devDependencies": {
-    "@babel/core": "^7.4.5",
-    "@storybook/html": "^5.0.11",
+    "@babel/core": "^7.5.4",
+    "@storybook/addon-actions": "^5.1.9",
+    "@storybook/addon-links": "^5.1.9",
+    "@storybook/addon-viewport": "^5.1.9",
+    "@storybook/addons": "^5.1.9",
+    "@storybook/react": "^5.1.9",
+    "apollo-storybook-react": "^0.2.1",
+    "graphql-tools": "^4.0.5",
     "jest-dom": "^3.4.0",
     "react-test-renderer": "^16.8.6",
     "react-testing-library": "^7.0.1",
+    "storybook-addon-styled-component-theme": "^1.2.3",
     "waait": "^1.0.4"
   }
 }

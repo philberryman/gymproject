@@ -1,9 +1,13 @@
-import { configure } from '@storybook/html';
+import { configure, addDecorator } from "@storybook/react";
+import { withThemesProvider } from "storybook-addon-styled-component-theme";
 
-// automatically import all files ending in *.stories.js
-const req = require.context('../stories', true, /\.stories\.js$/);
+import { theme } from "../src/Theme/index.js";
+
+const themes = [theme];
+addDecorator(withThemesProvider(themes));
+
 function loadStories() {
-  req.keys().forEach(filename => req(filename));
+  require("../src/stories");
 }
 
 configure(loadStories, module);

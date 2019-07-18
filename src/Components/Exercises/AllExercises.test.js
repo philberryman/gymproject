@@ -6,7 +6,10 @@ import { render, waitForElement } from "react-testing-library";
 import "jest-dom/extend-expect";
 
 import { AllExercises } from "./AllExercises";
-import { GET_EXERCISES } from "../../Queries/exercises";
+import { theme } from "../../Theme/index.js";
+import { ThemeProvider } from "styled-components";
+
+import { GET_EXERCISES } from "./queries";
 import { mockExercises } from "../../Tests/mockResponses/mockExercises";
 
 const componentElements = async () => {
@@ -16,7 +19,9 @@ const componentElements = async () => {
       addTypename={false}
     >
       <MemoryRouter>
-        <AllExercises />
+        <ThemeProvider theme={theme}>
+          <AllExercises />
+        </ThemeProvider>
       </MemoryRouter>
     </MockedProvider>
   );

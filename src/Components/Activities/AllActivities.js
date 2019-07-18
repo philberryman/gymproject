@@ -1,7 +1,7 @@
 import React from "react";
 import { Query } from "react-apollo";
 
-import { GET_EXERCISES } from "./queries";
+import { GET_ACTIVITIES } from "./queries";
 
 import {
   CenteredContainer,
@@ -16,9 +16,9 @@ import {
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import { faSpinner } from "@fortawesome/free-solid-svg-icons";
 
-export const AllExercises = props => {
+export const AllActivities = props => {
   return (
-    <Query query={GET_EXERCISES}>
+    <Query query={GET_ACTIVITIES}>
       {({ loading, error, data }) => {
         if (loading)
           return (
@@ -32,7 +32,7 @@ export const AllExercises = props => {
             </h2>
           );
         if (error) return `Error! fetching todos.`;
-        if (data.exercises.length === 0)
+        if (data.activities.length === 0)
           return (
             <div>
               <h3>No Exercises Created Yet</h3>
@@ -42,20 +42,20 @@ export const AllExercises = props => {
         return (
           <>
             <SubHeader> &lt; back</SubHeader>
-            <SubHeader>All Exercises</SubHeader>
+            <SubHeader>All Activities</SubHeader>
             <CenteredContainer>
               <UnstyledList>
-                {data.exercises.map(exercise => (
-                  <ProgramListItem key={exercise.id}>
-                    <UnStyledLink to={`/exercises/${exercise.id}`}>
-                      {exercise.name}
+                {data.activities.map(activity => (
+                  <ProgramListItem key={activity.id}>
+                    <UnStyledLink to={`/activities/${activity.id}`}>
+                      {activity.name}
                     </UnStyledLink>
                     <ButtonGroup>
                       <SmallButton
                         background="#EB7191"
-                        to={`/programs/${exercise.id}`}
+                        to={`/activities/${activity.id}`}
                       >
-                        View d
+                        View
                       </SmallButton>
                     </ButtonGroup>
                   </ProgramListItem>

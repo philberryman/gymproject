@@ -1,17 +1,17 @@
 import React from "react";
 import { Query } from "react-apollo";
 import { Link } from "react-router-dom";
-import { CenteredContainer, SubHeader } from "../../Styles/styles.js";
+import { CenteredContainer, SubHeader, ProgramHeader } from "./styles.js";
 
 import {
   GET_PROGRAM_ACTIVITIES,
   // DELETE_PROGRAM_ACTIVITY,
-} from "../../Queries/programActivities";
+} from "../ProgramActivities/queries";
 
 //  import { DELETE_PROGRAM, GET_PROGRAMS } from "../Queries/programs";
 
-import { AddProgramActivity } from "../AddProgramActivity";
-import { ProgramActivities } from "../ProgramActivities";
+import { AddProgramActivity } from "../ProgramActivities/AddProgramActivity";
+import { ProgramActivities } from "../ProgramActivities/ProgramActivities";
 
 export const Program = ({ match, history }) => {
   const programId = match.params.id;
@@ -36,8 +36,9 @@ export const Program = ({ match, history }) => {
 
         return (
           <>
-            <SubHeader> &lt; back back</SubHeader>
-            <SubHeader> {programs[0].name}</SubHeader>
+            <SubHeader> &lt; back</SubHeader>
+            <ProgramHeader> {programs[0].name}</ProgramHeader>
+
             <CenteredContainer>
               <ProgramActivities
                 programActivities={program_activities}

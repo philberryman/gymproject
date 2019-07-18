@@ -2,7 +2,7 @@ import React from "react";
 import { Mutation } from "react-apollo";
 import Url from "url-parse";
 
-import { GET_PROGRAM_ACTIVITIES } from "../../Queries/programActivities";
+import { GET_PROGRAM_ACTIVITIES } from "../ProgramActivities/queries";
 
 import PlusCircle from "../../assets/plus-circle-solid.svg";
 import MinusCircle from "../../assets/minus-circle-solid.svg";

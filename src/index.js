@@ -3,7 +3,8 @@ import React, { createContext, useState } from "react";
 import "./index.css";
 import registerServiceWorker from "./registerServiceWorker";
 import { App } from "./Components/App";
-
+import { theme } from "./Theme/index.js";
+import { ThemeProvider } from "styled-components";
 export const TokenContext = createContext();
 export let token = 0;
 export let setToken = {};
@@ -29,7 +30,9 @@ const Routes = () => {
         value: token,
       }}
     >
-      <App />
+      <ThemeProvider theme={theme}>
+        <App />
+      </ThemeProvider>
     </TokenContext.Provider>
   );
 };

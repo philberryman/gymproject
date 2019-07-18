@@ -3,14 +3,16 @@ import { MockedProvider } from "react-apollo/test-utils";
 import { Route, Router, MemoryRouter } from "react-router-dom";
 import { render, waitForElement } from "react-testing-library";
 import { createMemoryHistory } from "history";
+import { theme } from "../Theme/index.js";
+import { ThemeProvider } from "styled-components";
 
 import "jest-dom/extend-expect";
 
-import { ProgramActivities } from "../Components/ProgramActivities";
+import { ProgramActivities } from "../Components/ProgramActivities/ProgramActivities";
 import {
   GET_PROGRAM_ACTIVITIES,
   GET_USER_ACTIVITIES,
-} from "../Queries/programActivities";
+} from "../Components/ProgramActivities/queries";
 
 import {
   mockProgramActivities,
@@ -33,7 +35,9 @@ const componentElements = async () => {
       addTypename={false}
     >
       <MemoryRouter>
-        <ProgramActivities />
+        <ThemeProvider theme={theme}>
+          <ProgramActivities />
+        </ThemeProvider>
       </MemoryRouter>
     </MockedProvider>
   );
