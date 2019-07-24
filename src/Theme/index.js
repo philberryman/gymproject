@@ -36,4 +36,17 @@ export const theme = {
     large5: "640px",
     large6: "768px",
   },
+  fontSizes: {
+    small1: "12px",
+    small2: "14px",
+    small3: "16px",
+    small4: "18px",
+    medium1: "20px",
+    medium2: "24px",
+    medium3: "30px",
+    medium4: "36px",
+    large1: "48px",
+    large2: "60px",
+    large3: "72px",
+  },
 };
